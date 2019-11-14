@@ -1,2 +1,2 @@
-# Pure-Beurre
-OC - Project 8 - Web Plateform - Python, Django, MySQL/PostgreSQL, Bootstrap
+# Pur-Beurre
+OC - Project 8 - Web Dev - Python, Django, Database
