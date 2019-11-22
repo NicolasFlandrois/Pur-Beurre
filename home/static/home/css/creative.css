@@ -11,33 +11,38 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
+  --roibos_choco: #c45525;
+  --moules_frites: #345a61;
+  --bonbon_rigolo: #86ebe6;
+  --caramel_mou: #de9440;
+  --biscuit_trempe: #e8a75d;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #dc3545;
-  --orange: #f4623a;
+  --orange: #C45525; /*Rooibos chocolat*/
   --yellow: #ffc107;
   --green: #28a745;
   --teal: #20c997;
   --cyan: #17a2b8;
   --white: #fff;
   --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #f4623a;
+  --gray-dark: #345A61; /*Moules frites*/
+  --primary: #C45525; /*Rooibos chocolat*/
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
   --danger: #dc3545;
   --light: #f8f9fa;
-  --dark: #343a40;
+  --dark: #345A61; /*Moules frites*/
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: "Open Sans", sans-serif; "Scope One", sans-serif; "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -60,13 +65,13 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Scope One", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #212529; /*Dark Grey*/
   text-align: left;
-  background-color: #fff;
+  background-color: #fff; /*white*/
 }
 
 [tabindex="-1"]:focus {
@@ -80,6 +85,7 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
@@ -159,13 +165,13 @@ sup {
 }
 
 a {
-  color: #f4623a;
+  color: #C45525; /*Rooibos chocolat*/ /*Corail*/
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #d6370c;
+  color: #d6370c; /*Orange Sable*/
   text-decoration: underline;
 }
 
@@ -187,7 +193,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: "Scope One", sans-serif;
   font-size: 1em;
 }
 
@@ -218,7 +224,7 @@ table {
 caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  color: #6c757d;
+  color: #6c757d; /*grey*/
   text-align: left;
   caption-side: bottom;
 }
@@ -368,7 +374,7 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Open Sans", sans-serif;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -442,7 +448,7 @@ small,
 mark,
 .mark {
   padding: 0.2em;
-  background-color: #fcf8e3;
+  background-color: #fcf8e3; /*pale Yellow*/
 }
 
 .list-unstyled {
@@ -476,7 +482,7 @@ mark,
 .blockquote-footer {
   display: block;
   font-size: 80%;
-  color: #6c757d;
+  color: #6c757d; /*Grey*/
 }
 
 .blockquote-footer::before {
@@ -490,8 +496,8 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
+  background-color: #fff; /*White*/
+  border: 1px solid #dee2e6; /*White light grey-ish*/
   border-radius: 0.25rem;
   max-width: 100%;
   height: auto;
@@ -508,12 +514,12 @@ mark,
 
 .figure-caption {
   font-size: 90%;
-  color: #6c757d;
+  color: #6c757d; /*Grey*/
 }
 
 code {
   font-size: 87.5%;
-  color: #e83e8c;
+  color: #e83e8c; /*English Pink*/
   word-break: break-word;
 }
 
@@ -1616,7 +1622,7 @@ pre code {
 
 .table .thead-dark th {
   color: #fff;
-  background-color: #343a40;
+  background-color: #345A61; /*Moules frites*/
   border-color: #454d55;
 }
 
@@ -1628,7 +1634,7 @@ pre code {
 
 .table-dark {
   color: #fff;
-  background-color: #343a40;
+  background-color: #345A61; /*Moules frites*/
 }
 
 .table-dark th,
@@ -2256,8 +2262,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #f4623a;
-  border-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
+  border-color: #C45525; /*Rooibos chocolat*/
 }
 
 .btn-primary:hover {
@@ -2272,8 +2278,8 @@ fieldset:disabled a.btn {
 
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #f4623a;
-  border-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
+  border-color: #C45525; /*Rooibos chocolat*/
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
@@ -2494,8 +2500,8 @@ fieldset:disabled a.btn {
 
 .btn-dark {
   color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
+  background-color: #345A61; /*Moules frites*/
+  border-color: #345A61; /*Moules frites*/
 }
 
 .btn-dark:hover {
@@ -2510,8 +2516,8 @@ fieldset:disabled a.btn {
 
 .btn-dark.disabled, .btn-dark:disabled {
   color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
+  background-color: #345A61; /*Moules frites*/
+  border-color: #345A61; /*Moules frites*/
 }
 
 .btn-dark:not(:disabled):not(.disabled):active, .btn-dark:not(:disabled):not(.disabled).active,
@@ -2527,14 +2533,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-  color: #f4623a;
-  border-color: #f4623a;
+  color: #C45525; /*Rooibos chocolat*/
+  border-color: #C45525; /*Rooibos chocolat*/
 }
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #f4623a;
-  border-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
+  border-color: #C45525; /*Rooibos chocolat*/
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -2542,15 +2548,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
-  color: #f4623a;
+  color: #C45525; /*Rooibos chocolat*/
   background-color: transparent;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff;
-  background-color: #f4623a;
-  border-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
+  border-color: #C45525; /*Rooibos chocolat*/
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -2751,14 +2757,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-dark {
-  color: #343a40;
-  border-color: #343a40;
+  color: #345A61; /*Moules frites*/
+  border-color: #345A61; /*Moules frites*/
 }
 
 .btn-outline-dark:hover {
   color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
+  background-color: #345A61; /*Moules frites*/
+  border-color: #345A61; /*Moules frites*/
 }
 
 .btn-outline-dark:focus, .btn-outline-dark.focus {
@@ -2766,15 +2772,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-dark.disabled, .btn-outline-dark:disabled {
-  color: #343a40;
+  color: #345A61; /*Moules frites*/
   background-color: transparent;
 }
 
 .btn-outline-dark:not(:disabled):not(.disabled):active, .btn-outline-dark:not(:disabled):not(.disabled).active,
 .show > .btn-outline-dark.dropdown-toggle {
   color: #fff;
-  background-color: #343a40;
-  border-color: #343a40;
+  background-color: #345A61; /*Moules frites*/
+  border-color: #345A61; /*Moules frites*/
 }
 
 .btn-outline-dark:not(:disabled):not(.disabled):active:focus, .btn-outline-dark:not(:disabled):not(.disabled).active:focus,
@@ -2784,7 +2790,7 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #f4623a;
+  color: #C45525; /*Rooibos chocolat*/
   text-decoration: none;
 }
 
@@ -3083,7 +3089,7 @@ input[type="button"].btn-block {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -3436,8 +3442,8 @@ input[type="button"].btn-block {
 
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
-  border-color: #f4623a;
-  background-color: #f4623a;
+  border-color: #C45525; /*Rooibos chocolat*/
+  background-color: #C45525; /*Rooibos chocolat*/
 }
 
 .custom-control-input:focus ~ .custom-control-label::before {
@@ -3501,8 +3507,8 @@ input[type="button"].btn-block {
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
-  border-color: #f4623a;
-  background-color: #f4623a;
+  border-color: #C45525; /*Rooibos chocolat*/
+  background-color: #C45525; /*Rooibos chocolat*/
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
@@ -3727,7 +3733,7 @@ input[type="button"].btn-block {
   width: 1rem;
   height: 1rem;
   margin-top: -0.25rem;
-  background-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
   border: 0;
   border-radius: 1rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -3758,7 +3764,7 @@ input[type="button"].btn-block {
 .custom-range::-moz-range-thumb {
   width: 1rem;
   height: 1rem;
-  background-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
   border: 0;
   border-radius: 1rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -3792,7 +3798,7 @@ input[type="button"].btn-block {
   margin-top: 0;
   margin-right: 0.2rem;
   margin-left: 0.2rem;
-  background-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
   border: 0;
   border-radius: 1rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -3931,7 +3937,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
 }
 
 .nav-fill .nav-item {
@@ -4596,7 +4602,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #f4623a;
+  color: #C45525; /*Rooibos chocolat*/
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
@@ -4629,8 +4635,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #f4623a;
-  border-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
+  border-color: #C45525; /*Rooibos chocolat*/
 }
 
 .page-item.disabled .page-link {
@@ -4713,7 +4719,7 @@ a.badge:hover, a.badge:focus {
 
 .badge-primary {
   color: #fff;
-  background-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
 }
 
 a.badge-primary:hover, a.badge-primary:focus {
@@ -4818,7 +4824,7 @@ a.badge-light:focus, a.badge-light.focus {
 
 .badge-dark {
   color: #fff;
-  background-color: #343a40;
+  background-color: #345A61; /*Moules frites*/
 }
 
 a.badge-dark:hover, a.badge-dark:focus {
@@ -5024,7 +5030,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
   transition: width 0.6s ease;
 }
 
@@ -5114,8 +5120,8 @@ a.badge-dark:focus, a.badge-dark.focus {
 .list-group-item.active {
   z-index: 2;
   color: #fff;
-  background-color: #f4623a;
-  border-color: #f4623a;
+  background-color: #C45525; /*Rooibos chocolat*/
+  border-color: #C45525; /*Rooibos chocolat*/
 }
 
 .list-group-horizontal {
@@ -6205,13 +6211,13 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #f4623a !important;
+  background-color: #C45525 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #ee3e0d !important;
+  background-color: #DE9440 !important;
 }
 
 .bg-secondary {
@@ -6333,7 +6339,7 @@ button.bg-dark:focus {
 }
 
 .border-primary {
-  border-color: #f4623a !important;
+  border-color: #C45525 !important;
 }
 
 .border-secondary {
@@ -9364,7 +9370,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #f4623a !important;
+  color: #C45525 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -9564,7 +9570,7 @@ html {
 hr.divider {
   max-width: 3.25rem;
   border-width: 0.2rem;
-  border-color: #f4623a;
+  border-color: #C45525; /*Rooibos chocolat*/
 }
 
 hr.light {
@@ -9572,7 +9578,7 @@ hr.light {
 }
 
 .btn {
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Scope One", sans-serif;
 }
 
 .btn-xl {
@@ -9595,25 +9601,25 @@ hr.light {
 }
 
 #mainNav .navbar-brand {
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   color: #212529;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
   color: #6c757d;
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
   padding: 0.75rem 0;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link:active {
-  color: #f4623a;
+  color: #C45525; /*Rooibos chocolat*/
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active {
-  color: #f4623a !important;
+  color: #C45525 !important;
 }
 
 @media (min-width: 992px) {
@@ -9645,13 +9651,13 @@ hr.light {
     color: #212529;
   }
   #mainNav.navbar-scrolled .navbar-brand:hover {
-    color: #f4623a;
+    color: #C45525; /*Rooibos chocolat*/
   }
   #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link {
     color: #212529;
   }
   #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link:hover {
-    color: #f4623a;
+    color: #C45525; /*Rooibos chocolat*/
   }
 }
 

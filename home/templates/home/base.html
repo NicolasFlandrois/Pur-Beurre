@@ -15,20 +15,20 @@
   {% else %}
       <title>Pur Beurre</title>
   {% endif %}
-  <link rel="shortcut icon" href="{{ url_for('static', filename='logo_pur_beurre-favicon.png') }}">
+  <link rel="icon" type="image/png" href="{% static 'home/img/logo_pur_beurre-favicon.png' %}" />
 
   <!-- Font Awesome Icons -->
-  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'home/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
   <!-- Google Fonts -->
   <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
 
   <!-- Plugin CSS -->
-  <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+  <link href="{% static 'home/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
 
   <!-- Theme CSS - Includes Bootstrap -->
-  <link href="{% static 'css/creative.min.css' %}" rel="stylesheet">
+  <link href="{% static 'home/css/creative.css' %}" rel="stylesheet">
 
 </head>
 
@@ -48,13 +48,16 @@
       <!-- Add Search Bar Here -->
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">Rechercher</a>
+            <a class="nav-link js-scroll-trigger" href="#">Rechercher</a> <!-- Search Bar Here -->
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Qui sommes nous?</a>
+            <a class="nav-link js-scroll-trigger" href="#">Mon Compte</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contactez nous</a>
+            <a class="nav-link js-scroll-trigger" href="#">Mes Favoris</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#">Déconnexion</a>
           </li>
         </ul>
       </div>
@@ -71,15 +74,15 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="home/vendor/jquery/jquery.min.js"></script>
+  <script src="home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <script src="home/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="home/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="js/creative.min.js"></script>
+  <script src="home/js/creative.js"></script>
 
 </body>
 
