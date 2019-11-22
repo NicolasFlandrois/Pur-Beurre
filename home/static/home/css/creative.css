@@ -403,6 +403,17 @@ h6, .h6 {
   font-size: 1rem;
 }
 
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
 .lead {
   font-size: 1.25rem;
   font-weight: 300;

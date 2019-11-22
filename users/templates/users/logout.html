@@ -1,12 +1,12 @@
-{% extends "blog/base.html" %}
+{% extends "home/base.html" %}
 
 
 {% block content %}
 
-    <h2>You have been logged out.</h2>
+    <h2>Vous êtes maintenant déconnecté.</h2>
     <div class="border-top pt-3">
         <small class="text-muted">
-            <a href="{% url 'login' %}">Log in again</a>
+            <a href="{% url 'login' %}">Se connecter à nouveau</a>
         </small>
     </div>
 
