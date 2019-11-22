@@ -11,11 +11,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-  --roibos_choco: #c45525;
-  --moules_frites: #345a61;
-  --bonbon_rigolo: #86ebe6;
-  --caramel_mou: #de9440;
-  --biscuit_trempe: #e8a75d;
+  --rooibosc: #c45525;
+  --moulesf: #345a61;
+  --bonbonr: #86ebe6;
+  --caramelm: #de9440;
+  --biscuittr: #e8a75d;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -9746,4 +9746,24 @@ header.masthead h1 {
 
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
+}
+
+#login {
+  background-color: #DE9440;  /*Caramel mou*/
+}
+
+#logout {
+  background-color: #345a61; /*Moules frites*/
+}
+
+#password {
+  background-color: #e8a75d; /*Biscuit trempé*/
+}
+
+#register {
+  background-color: #C45525; /*Rooibos chocolat*/
+}
+
+#profile {
+  background-color: #86ebe6; /*Bonbon rigolo*/
 }
