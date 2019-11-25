@@ -3,13 +3,29 @@
 
 {% block content %}
 
-    <div id="logout">
-        <h2>Vous êtes maintenant déconnecté.</h2>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                <a href="{% url 'login' %}">Se connecter à nouveau</a>
-            </small>
-        </div>
+
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} ">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+            <div id="logout">
+                <h2>Vous êtes maintenant déconnecté.</h2>
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        <a href="{% url 'login' %}">Se connecter à nouveau</a>
+                    </small>
+                </div>
+            </div>
+
+      </div>
     </div>
+  </main>
 
 {% endblock content %}

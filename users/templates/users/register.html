@@ -4,22 +4,38 @@
 
 {% block content %}
 
-    <div id="register" class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Créez votre compte</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Enregistrer</button>
+
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} ">
+              {{ message }}
             </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Avez-vous déjà un compte? <a class="ml-2" href="{% url 'login' %}">Se connecter</a>
-            </small>
-        </div>
+          {% endfor %}
+        {% endif %}
+
+            <div id="register" class="content-section">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Créez votre compte</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Enregistrer</button>
+                    </div>
+                </form>
+                <div class="border-top pt-3">
+                    <small class="text-muted">
+                        Avez-vous déjà un compte? <a class="ml-2" href="{% url 'login' %}">Se connecter</a>
+                    </small>
+                </div>
+            </div>
+
+      </div>
     </div>
+  </main>
 
 {% endblock content %}
