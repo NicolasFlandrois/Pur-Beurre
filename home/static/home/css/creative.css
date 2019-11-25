@@ -6222,7 +6222,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #C45525 !important;
+  background-color: #345A61 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -6350,7 +6350,7 @@ button.bg-dark:focus {
 }
 
 .border-primary {
-  border-color: #C45525 !important;
+  border-color: #345A61; /*Moules frites*/!important;
 }
 
 .border-secondary {
@@ -9381,7 +9381,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #C45525 !important;
+  color: #345A61; /*Moules frites*/!important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -9630,7 +9630,7 @@ hr.light {
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active {
-  color: #C45525 !important;
+  color: #345A61; /*Moules frites*/!important;
 }
 
 @media (min-width: 992px) {

@@ -3,6 +3,9 @@
 
 {% block content %}
 
+  <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+  <p class="col d-flex invisible" style="margin-bottom: 200px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
+  <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
 
   <main role="main" class="container">
     <div class="row">
@@ -15,7 +18,7 @@
           {% endfor %}
         {% endif %}
 
-            <div id="logout">
+            <div>
                 <h2>Vous êtes maintenant déconnecté.</h2>
                 <div class="border-top pt-3">
                     <small class="text-muted">

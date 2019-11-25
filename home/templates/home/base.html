@@ -38,7 +38,7 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <!-- Left Side -->
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Pur Beurre</a>
+      <a class="navbar-brand js-scroll-trigger" href="{% url 'home-home' %}">Pur Beurre</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,15 +50,24 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#">Rechercher</a> <!-- Search Bar Here -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">Mon Compte</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">Mes Favoris</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">Déconnexion</a>
-          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'profile' %}">Mon Compte</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#">Mes Favoris</a> <!-- {% url 'favorite' %} -->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Déconnecter</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Connexion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'register' %}">Créer un Compte</a>
+            </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -67,9 +76,15 @@
   {% block content %}{% endblock %}
 
   <!-- Footer -->
-  <footer class="bg-light py-5">
-    <div class="container">
-      <div class="small text-center text-muted">Copyright &copy; 2019 - Nicolas Flandrois</div>
+  <footer class="footer fixed-bottom bg-light">
+    <div class="container d-flex footer_block">
+      <div class="m-3 mx-auto small text-center text-muted">
+        <a href="{% url 'home-legal' %}">Mentions Legales</a>
+      </div>
+      <div class="m-3 mx-auto small text-center text-muted">Copyright &copy; 2019 - Nicolas Flandrois</div>
+      <div class="m-3 mx-auto small text-center text-muted">
+        <a href="#">Contact</a>
+      </div>
     </div>
   </footer>
 

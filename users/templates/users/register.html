@@ -4,6 +4,9 @@
 
 {% block content %}
 
+  <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+  <p class="col d-flex invisible" style="margin-bottom: 200px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
+  <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
 
   <main role="main" class="container">
     <div class="row">
@@ -16,7 +19,7 @@
           {% endfor %}
         {% endif %}
 
-            <div id="register" class="content-section">
+            <div class="content-section">
                 <form method="POST">
                     {% csrf_token %}
                     <fieldset class="form-group">
