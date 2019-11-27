@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'snacks.apps.SnacksConfig',
     'users.apps.UsersConfig',
     'home.apps.HomeConfig',
     'crispy_forms',
@@ -128,5 +129,5 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_REDIRECT_URL = 'home-home'
 LOGIN_URL = 'login'
