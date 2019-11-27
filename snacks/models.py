@@ -22,8 +22,11 @@ class Product(models.Model):
     """docstring for Products"""
     ean = models.CharField(max_length=13)
     name = models.CharField(max_length=50)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    substitute = Column(Integer, ForeignKey('product.id'))   #???
+    image = models.ImageField(
+        default='products_default.jpg', upload_to='products_pics')
+    nutriscore = models.CharField(max_length=100)
+    # category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    # substitute = Column(Integer, ForeignKey('product.id'))   #???
 
     def __str__(self):
         return self.name

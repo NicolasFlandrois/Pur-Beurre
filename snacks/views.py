@@ -9,21 +9,21 @@ from django.views.generic import (ListView,
 from .models import Product, Category, Favourite
 
 
-class ProductListView(ListView):
-    model = Post
-    template_name = 'snacks/products.html'
+class SearchListView(ListView):
+    model = Product
+    template_name = 'snacks/search.html'
     context_object_name = 'search'
     # ordering = ['-date_added']
-    paginate_by = 5
+    paginate_by = 6
 
 
-class UserProductListView(ListView):
-    model = Post
-    template_name = 'snacks/products.html'
+class FavouritesListView(ListView):
+    model = Favourite
+    template_name = 'snacks/favourites.html'
     context_object_name = 'favourites'
     ordering = ['-date_added']
-    paginate_by = 5
+    paginate_by = 6
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Post.objects.filter(author=user).order_by('-date_posted')
+        return Product.objects.filter(author=user).order_by('-date_posted')
