@@ -23,6 +23,7 @@ class Product(models.Model):
     """docstring for Products"""
     ean = models.CharField(max_length=13)
     name = models.CharField(max_length=50)
+    category = models.CharField(max_length=50)
     image = models.ImageField(
         default='products_default.jpg', upload_to='products_pics')
     nutriscore = models.CharField(max_length=100)
@@ -35,8 +36,8 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('product-detail', kwargs={'pk': self.pk})
 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 
@@ -46,21 +47,22 @@ class Product(models.Model):
             img.save(self.image.path)
 
 
-class Category(models.Model):
-    """docstring for Categories"""
-    name = models.CharField(max_length=50)
+# class Category(models.Model):
+#     """docstring for Categories"""
+#     name = models.CharField(max_length=50)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
-    def get_absolute_url(self):
-        return reverse('category-detail', kwargs={'pk': self.pk})
+#     def get_absolute_url(self):
+#         return reverse('category-detail', kwargs={'pk': self.pk})
 
 
 class Favourite(object):
     """docstring for Favourite"""
     date_added = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user
