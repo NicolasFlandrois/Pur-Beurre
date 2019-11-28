@@ -3,12 +3,18 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <h1 class="mb-3"> Résultats de votre recherche ({{ page_obj.paginator.count }})</h1>
+
+    {% if title=='search' %}
+        <h1 class="mb-3"> Résultats de votre recherche ({{ page_obj.paginator.count }})</h1>
+    {% if title=='favourites' %}
+        <h1 class="mb-3"> Vos aliments favoris ({{ page_obj.paginator.count }})</h1>
+    {% else %}
+        <h1 class="mb-3"> Liste de produits ({{ page_obj.paginator.count }})</h1>
+    {% endif %}
 
     <!-- Search Content -->
     {% if products_substitut|length_is:"0" %}
         <section class="container-fluid resultats">
-          <!-- Partie presentation -->
           <div class="row text-center resultat-titre">
             <h2>Nous n'avons trouvé aucun résultat:</h2>
           </div>
