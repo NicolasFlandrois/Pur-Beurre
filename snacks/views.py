@@ -27,3 +27,9 @@ class FavouritesListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Product.objects.filter(author=user).order_by('-date_posted')
+
+class ProductDetailView(DetailView):
+  """docstring for ProductDetailView"""
+  # def __init__(self, arg):
+  #   super(ProductDetailView, self).__init__()
+  #   self.arg = arg

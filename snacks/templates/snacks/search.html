@@ -3,10 +3,21 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+  <h1 class="mb-3"> Résultats de votre recherche ({{ page_obj.paginator.count }})</h1>
+    {% for card in cards %}
 
 <!-- Page content HERE! -->
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
     <i class="far fa-save"></i>
 <!-- Page content HERE! -->
+    {% endfor %}
 
     {% if is_paginated %}
 
