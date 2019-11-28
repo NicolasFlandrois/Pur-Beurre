@@ -4,21 +4,36 @@
 
 {% block content %}
   <h1 class="mb-3"> Résultats de votre recherche ({{ page_obj.paginator.count }})</h1>
-    {% for card in cards %}
 
-<!-- Page content HERE! -->
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <i class="far fa-save"></i>
-<!-- Page content HERE! -->
-    {% endfor %}
+    <!-- Search Content -->
+    {% if products_substitut|length_is:"0" %}
+        <section class="container-fluid resultats">
+          <!-- Partie presentation -->
+          <div class="row text-center resultat-titre">
+            <h2>Nous n'avons trouvé aucun résultat:</h2>
+          </div>
+        </section>
 
+    {% else %}
+
+        {% for card in cards %}
+
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <i class="far fa-save"></i>
+
+        {% endfor %}
+
+    {% endif %}
+    <!-- End Search Content -->
+
+    <!-- Pagination -->
     {% if is_paginated %}
 
       {% if page_obj.has_previous %}

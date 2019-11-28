@@ -27,7 +27,7 @@ from . import views
 urlpatterns = [
     path('user/<str:username>', FavouritesListView.as_view(), name='user-favourites'),
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
-    path('search/<int:pk>/', SearchListView.as_view(), name='product-search'),
+    path('search/<str:search>/', SearchListView.as_view(), name='product-search'),
     # path('product/new/', PostCreateView.as_view(), name='product-create'),
     # path('product/<int:pk>/update/', PostUpdateView.as_view(),
     #      name='product-update'),
