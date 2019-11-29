@@ -1,0 +1,17 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block content %}
+    <style type="text/css">
+    .bgcol {
+        background-color: #345A61;
+    }
+    </style>
+    <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+    <p class="col d-flex invisible" style="margin-bottom: 200px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
+    <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+
+    <div class="d-flex justify-content-center bgcol">
+        <h1 class="text-white-50 m-4" >Votre produit n'a pas été trouvé. Veuillez rééssayer.</h1>
+    </div>
+{% endblock content %}
