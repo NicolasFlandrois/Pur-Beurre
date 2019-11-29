@@ -1,60 +1,65 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import (ListView,
                                   DetailView,
                                   CreateView,
                                   UpdateView,
                                   DeleteView)
-from .models import Product, Category, Favourite
+from .models import Product, Favourite
+from .parser import parser
+
+
+def errorView(request):
+    context = {}
+    return render(request, 'snacks/error.html', context)
 
 
 class SearchListView(ListView):
-  model = Product
-  template_name = 'snacks/search.html'
-  context_object_name = 'search'
-  # ordering = ['-date_added']
-  paginate_by = 6
+    model = Product
+    template_name = 'snacks/search.html'
+    context_object_name = 'results'
+    ordering = ['-nutriscore']
+    paginate_by = 4
 
-  # retrieving URL parameters
-  query = request.GET.get('query')
-  # If there is no requested parameter we display all the products
-  context = {}
-  if not query:
-    product = Product.objects.all()
-  # Otherwise a parameter is transmitted
-  else:
-    # find a match by "product name"
-    product = Product.objects.filter(name=query)
+    def get_queryset(self):
+        # HERE ISSUE The GET param isn't transfered further
+        query = self.kwargs['query']
+        parsed = parser(query.lower())
+        # Mettre un Try/Except (Except return E404)
+        if parsed[1] > 0:
+            search_result = Product.objects.filter(pk=int(parsed[0])).first()
 
-    # if the products do not exist
-    if not product.exists():
-      context["error"] = True
-      context["Product"] = []
-  #   else:
-  #     context["product_research"] = product[0]
-  #     liste_product = Product.objects.filter(
-  #         category=product[0].category
-  #     ).order_by('nutriscore')[:9]
-  #     context["products_substitut"] = liste_product
-  #     context["paginate"] = True
-  # return render(request, template_name, context)
+            if not search_result is None:
+                print("Successfull ",
+                      search_result.pk, search_result.name)
+
+                return Product.objects.filter(
+                    category=search_result.category)
+            else:
+                print('Not in DB')
+                return redirect('/error')
+
+        else:
+            print("No Query")
+            return Product.objects.all()
 
 
 class FavouritesListView(ListView):
-  model = Favourite
-  template_name = 'snacks/favourites.html'
-  context_object_name = 'favourites'
-  ordering = ['-date_added']
-  paginate_by = 6
+    model = Favourite
+    template_name = 'snacks/favourites.html'
+    context_object_name = 'favourites'
+    ordering = ['-date_added']
+    paginate_by = 6
 
-  def get_queryset(self):
-    user = get_object_or_404(User, username=self.kwargs.get('username'))
-    return Product.objects.filter(author=user).order_by('-date_posted')
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Product.objects.filter(author=user).order_by('-date_posted')
 
 
 class ProductDetailView(DetailView):
-  """docstring for ProductDetailView"""
-  # def __init__(self, arg):
-  #   super(ProductDetailView, self).__init__()
-  #   self.arg = arg
+    """docstring for ProductDetailView"""
+
+    def __init__(self, arg):
+        super(ProductDetailView, self).__init__()
+        self.arg = arg
