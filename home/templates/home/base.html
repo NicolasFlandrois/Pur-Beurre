@@ -49,9 +49,10 @@
           <li class="nav-item">
             <!-- Form to search a Product -->
             <div class="container-fluid d-flex justify-content-center p-2 mr-3" >
-              <input id="Search" name="Search" type="text" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer?" required="required" title="Produit à Substituer">
+              <input id="search" name="search" type="text" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer?" required="required" title="Produit à Substituer">
               <button id="submit" name="submit" type="submit" class="btn btn-secondary mb-2" title="Chercher">Chercher</button>
             </div>
+            <!-- End Search Form -->
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
