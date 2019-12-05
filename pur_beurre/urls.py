@@ -19,7 +19,6 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
-from snacks import views as snacks_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,15 +45,7 @@ urlpatterns = [
              template_name='users/password_reset_complete.html'),
          name='password_reset_complete'),
 
-    path('favourites/<str:username>',
-         snacks_views.FavouritesListView.as_view(), name='snacks-favourites'),
-    path('product/<int:pk>/', snacks_views.ProductDetailView.as_view(),
-         name='snacks-detail'),
-    path('search/',
-         snacks_views.SearchListView.as_view(), name='snacks-search'),
-
-    path('error',
-         snacks_views.errorView, name='snacks-error'),
+    path('snacks/', include('snacks.urls')),
 
     path('', include('home.urls')),
 ]

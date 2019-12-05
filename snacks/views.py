@@ -16,6 +16,17 @@ def errorView(request):
     return render(request, 'snacks/error.html', context)
 
 
+class AllListView(ListView):
+    model = Product
+    template_name = 'snacks/search.html'
+    context_object_name = 'results'
+    ordering = ['nutriscore']
+    paginate_by = 4
+
+    def allView(request):
+        return Product.objects.all()
+
+
 class SearchListView(ListView):
     model = Product
     template_name = 'snacks/search.html'
@@ -39,7 +50,6 @@ class SearchListView(ListView):
                     raise
 
             else:
-                # return Product.objects.all()
                 raise
 
         except:

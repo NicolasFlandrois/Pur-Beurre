@@ -13,24 +13,20 @@
 #     1. Import the include() function: from django.urls import include, path
 #     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 # """
-# from django.urls import path
-# # from .views import (PostListView,
-# #                     PostDetailView,
-# #                     PostCreateView,
-# #                     PostUpdateView,
-# #                     PostDeleteView,
-# #                     UserPostListView)
-# from .views import (SearchListView,
-#                     FavouritesListView)
-# from . import views
+from django.urls import path
 
-# urlpatterns = [
-#     path('favourites/<str:username>', FavouritesListView.as_view(), name='user-favourites'),
-#     path('product/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
-#     path('search/<str:search>/', SearchListView.as_view(), name='product-search'),
-#     # path('product/new/', PostCreateView.as_view(), name='product-create'),
-#     # path('product/<int:pk>/update/', PostUpdateView.as_view(),
-#     #      name='product-update'),
-#     # path('product/<int:pk>/delete/', PostDeleteView.as_view(),
-#     #      name='product-delete'),
-# ]
+from . import views as snacks_views
+
+urlpatterns = [
+    path('favourites/<str:username>',
+         snacks_views.FavouritesListView.as_view(), name='snacks-favourites'),
+    path('product/<int:pk>/', snacks_views.ProductDetailView.as_view(),
+         name='snacks-detail'),
+    path('search/',
+         snacks_views.SearchListView.as_view(), name='snacks-search'),
+
+    path('error',
+         snacks_views.errorView, name='snacks-error'),
+
+    path('', snacks_views.AllListView.as_view(), name='snacks-allsearch')
+]
