@@ -8,6 +8,7 @@ from django.views.generic import (ListView,
                                   DeleteView)
 from .models import Product, Favourite
 from .parser import parser
+from .forms import SearchForm
 
 
 def errorView(request):
@@ -19,30 +20,30 @@ class SearchListView(ListView):
     model = Product
     template_name = 'snacks/search.html'
     context_object_name = 'results'
-    ordering = ['-nutriscore']
+    ordering = ['nutriscore']
     paginate_by = 4
 
-    def get_queryset(self):
-        # HERE ISSUE The GET param isn't transfered further
-        query = self.kwargs['query']
-        parsed = parser(query.lower())
-        # Mettre un Try/Except (Except return E404)
-        if parsed[1] > 0:
-            search_result = Product.objects.filter(pk=int(parsed[0])).first()
+    def search(request):
+        query = request.GET['search']
+        print('Got GET request query', query)
+        try:
+            parsed = parser(query.lower())
+            if parsed[1] > 0:
+                search_result = Product.objects.filter(
+                    pk=int(parsed[0])).first()
 
-            if not search_result is None:
-                print("Successfull ",
-                      search_result.pk, search_result.name)
+                if search_result is not None:
+                    return Product.objects.filter(
+                        category=search_result.category)
+                else:
+                    raise
 
-                return Product.objects.filter(
-                    category=search_result.category)
             else:
-                print('Not in DB')
-                return redirect('/error')
+                # return Product.objects.all()
+                raise
 
-        else:
-            print("No Query")
-            return Product.objects.all()
+        except:
+            return redirect('/error')
 
 
 class FavouritesListView(ListView):

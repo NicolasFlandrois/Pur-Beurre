@@ -49,8 +49,10 @@
           <li class="nav-item">
             <!-- Form to search a Product -->
             <div class="container-fluid d-flex justify-content-center p-2 mr-3" >
-              <input id="search" name="search" type="text" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer?" required="required" title="Produit à Substituer">
-              <button id="submit" name="submit" type="submit" class="btn btn-secondary mb-2" title="Chercher">Chercher</button>
+              <form action="/search/" method="GET">
+                <input type="text" name="search" placeholder="Produit à substituer">
+                <input type="submit" value="chercher">
+              </form>
             </div>
             <!-- End Search Form -->
           </li>

@@ -29,8 +29,10 @@
           <img class="card-img-top" src="{{ result.image.url }}" alt="Card image cap">
           <div class="card-body">
                 <h5 class="card-title">{{ result.name }}</h5>
-                <a href="product/{{ result.pk }}/" class="btn btn-primary" title="Page Aliment {{ result.name }}" alt="Page Aliment {{ result.name }}">Page Aliment</a>
-                <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i class="far fa-save"></i></a>
+                <div class="d-flex">
+                  <a href="product/{{ result.pk }}/" class="btn btn-primary m-1" title="Page Aliment {{ result.name }}" alt="Page Aliment {{ result.name }}">Page Aliment</a>
+                  <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i class="far fa-save"></i></a>
+                </div>
             </div>
           </div>
 
