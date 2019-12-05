@@ -1,20 +1,10 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from .models import Product
 
 
-# class UserRegisterForm(UserCreationForm):
-#     email = forms.EmailField()
-
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email', 'password1', 'password2']
-
-
 class SearchForm(forms.ModelForm):
-    # email = forms.EmailField()
-    search = #Continue Here
+    search = forms.CharField(label='Produit à substituer', max_length=100)
 
     class Meta:
         model = Product
-        fields = ['Produit à substituer']
+        fields = ['name']
