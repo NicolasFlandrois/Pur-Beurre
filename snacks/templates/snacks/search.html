@@ -12,7 +12,7 @@
     <!-- Search Content -->
     {% for result in results %}
 
-        <div class="card m-3 col-2" style="width: 18rem; height: auto;">
+        <div class="card m-3 col-2" style="width: 20rem; height: auto;">
             {% if result.nutriscore == 'a' %}
                 <img class="card-img-top" src="{% static 'home/img/nutriscore-a.svg' %}" alt="Nutriscore A">
             {% elif result.nutriscore == 'b' %}
@@ -31,7 +31,7 @@
                 <h5 class="card-title">{{ result.name }}</h5>
                 <div class="d-flex">
                   <a href="product/{{ result.pk }}/" class="btn btn-primary m-1" title="Page Aliment {{ result.name }}" alt="Page Aliment {{ result.name }}">Page Aliment</a>
-                  <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i class="far fa-save"></i></a>
+                  <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
                 </div>
             </div>
           </div>
