@@ -1,6 +1,6 @@
 import operator
 from .models import Product
-
+# Remplacer Parser par: https://stackoverflow.com/questions/7088173/how-to-query-model-where-name-contains-any-word-in-python-list
 
 def parser(query: str):
   """
