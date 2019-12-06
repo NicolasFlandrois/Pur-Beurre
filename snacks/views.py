@@ -24,6 +24,7 @@ class AllListView(ListView):
     paginate_by = 4
 
     def allView(request):
+        print('All product')
         return Product.objects.all()
 
 
@@ -34,26 +35,33 @@ class SearchListView(ListView):
     ordering = ['nutriscore']
     paginate_by = 4
 
-    def search(request):
-        query = request.GET['search']
-        print('Got GET request query', query)
+    def get_queryset(self):
+        search = self.request.GET['search'] if 'search' in self.request.GET else 'all'
+        print(search)
+        query = Product.objects.all()
+        if search == 'all':
+            return query
         try:
-            parsed = parser(query.lower())
+            parsed = parser(search.lower())
+            print(parsed)
             if parsed[1] > 0:
                 search_result = Product.objects.filter(
                     pk=int(parsed[0])).first()
 
                 if search_result is not None:
-                    return Product.objects.filter(
+                    query = Product.objects.filter(
                         category=search_result.category)
                 else:
-                    raise
+                    query = []
 
             else:
-                raise
+                query = []
 
-        except:
-            return redirect('/error')
+        except Exception as e:
+            # return redirect('/error')
+            print(e)
+
+        return query
 
 
 class FavouritesListView(ListView):
