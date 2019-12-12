@@ -33,7 +33,7 @@ class SearchListView(ListView):
     template_name = 'snacks/search.html'
     context_object_name = 'results'
     ordering = ['nutriscore']
-    paginate_by = 4
+    paginate_by = 7
 
     def get_queryset(self):
         search = self.request.GET['search'] if 'search' in self.request.GET else 'all'

@@ -26,7 +26,7 @@
             {% else %}
                 <img class="card-img-top" src="{% static 'home/img/nutriscore-u.png' %}" alt="Nutriscore Non Connue">
             {% endif %}
-          <img class="card-img-top" src="{{ result.image.url }}" alt="Card image cap">
+          <img class="card-img-top img-responsive" src="{{ result.image.url }}" alt="Card image cap">
           <div class="card-body">
                 <h5 class="card-title">{{ result.name }}</h5>
                 <div class="d-flex">
@@ -34,6 +34,8 @@
                   <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
                 </div>
             </div>
+
+          {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div> {% endif %}
           </div>
 
     {% endfor %}
