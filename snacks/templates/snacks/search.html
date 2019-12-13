@@ -31,7 +31,9 @@
                 <h5 class="card-title">{{ result.name }}</h5>
                 <div class="d-flex">
                   <a href="{% url 'snacks-detail' pk=result.pk %}" class="btn btn-primary m-1" title="Page Aliment {{ result.name }}" alt="Page Aliment {{ result.name }}">Page Aliment</a>
-                  <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
+                  {% if user.is_authenticated %}
+                    <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
+                  {% endif %}
                 </div>
             </div>
 
