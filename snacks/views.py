@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.views.generic import (ListView,
                                   DetailView,
                                   CreateView,
@@ -17,7 +18,6 @@ def errorView(request):
 
 class AllListView(ListView):
     model = Product
-    page_title = 'HELLO WORLD'
     template_name = 'snacks/list.html'
     context_object_name = 'results'
     ordering = ['nutriscore']
@@ -88,10 +88,10 @@ class FavouritesListView(ListView):
 
     # Detect username from authenticated/url GET
     # Use username to ORM filter favourite list by username
-
+    @login_required
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Product.objects.filter(author=user).order_by('-date_posted')
+        return Favourite.objects.filter(user=user).order_by('-date_added')
 
 
 class ProductDetailView(DetailView):
