@@ -17,7 +17,8 @@ def errorView(request):
 
 class AllListView(ListView):
     model = Product
-    template_name = 'snacks/search.html'
+    page_title = 'HELLO WORLD'
+    template_name = 'snacks/list.html'
     context_object_name = 'results'
     ordering = ['nutriscore']
     paginate_by = 4
@@ -29,7 +30,7 @@ class AllListView(ListView):
 
 class SearchListView(ListView):
     model = Product
-    template_name = 'snacks/search.html'
+    template_name = 'snacks/list.html'
     context_object_name = 'results'
     ordering = ['nutriscore']
     paginate_by = 7
@@ -80,7 +81,7 @@ class SearchListView(ListView):
 
 class FavouritesListView(ListView):
     model = Favourite
-    template_name = 'snacks/favourites.html'
+    template_name = 'snacks/list.html'
     context_object_name = 'favourites'
     ordering = ['-date_added']
     paginate_by = 6
