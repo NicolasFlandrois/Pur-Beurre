@@ -11,11 +11,11 @@
 
   <div class="d-flex justify-content-center">
     <!-- install a IF conditional statement, if page is search, display search title, elif favourite display favourite title -->
-    {% if search%} <!-- Still need to decide where/which variable -->
+    {% if title == 'Chercher' %} <!-- Still need to decide where/which variable -->
     <!-- Install a background image -->
     <h1>Aliment recherché: [NAME HERE/or search request] {{ page_title }}</h1>
     <!-- Couleur text Blanc ou couleur contrasté -->
-    {% elif favoutite %}
+    {% elif title == 'Mes Favoris' %}
     <!-- Install a background image -->
     <h1>Mes Favoris</h1>
     <!-- Couleur text Blanc ou couleur contrasté -->

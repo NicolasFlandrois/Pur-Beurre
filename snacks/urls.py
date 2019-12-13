@@ -18,12 +18,17 @@ from django.urls import path
 from . import views as snacks_views
 
 urlpatterns = [
-    path('favourites/<str:username>',
-         snacks_views.FavouritesListView.as_view(), name='snacks-favourites'),
-    path('product/<int:pk>/', snacks_views.ProductDetailView.as_view(),
+    path('favourites/',
+         snacks_views.FavouritesListView.as_view(),
+         name='snacks-favourites'),
+
+    path('product/<int:pk>/',
+         snacks_views.ProductDetailView.as_view(),
          name='snacks-detail'),
+
     path('search/',
-         snacks_views.SearchListView.as_view(), name='snacks-search'),
+         snacks_views.SearchListView.as_view(),
+         name='snacks-search'),
 
     path('error',
          snacks_views.errorView, name='snacks-error'),
