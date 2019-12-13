@@ -82,9 +82,12 @@ class SearchListView(ListView):
 class FavouritesListView(ListView):
     model = Favourite
     template_name = 'snacks/list.html'
-    context_object_name = 'favourites'
+    context_object_name = 'results'
     ordering = ['-date_added']
     paginate_by = 6
+
+    # Detect username from authenticated/url GET
+    # Use username to ORM filter favourite list by username
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
@@ -95,6 +98,8 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'snacks/details.html'
     context_object_name = 'details'
+
+    # need to compile info from OFF's Json API
 
     def get_queryset(self):
         prod_pk = self.kwargs.get('pk')
