@@ -35,33 +35,48 @@ class SearchListView(ListView):
     ordering = ['nutriscore']
     paginate_by = 7
 
-    def get_queryset(self):
-        search = self.request.GET['search'] if 'search' in self.request.GET else 'all'
-        print(search)
-        query = Product.objects.all()
-        if search == 'all':
-            return query
-        try:
-            parsed = parser(search.lower())
-            print(parsed)
-            if parsed[1] > 0:
-                search_result = Product.objects.filter(
-                    pk=int(parsed[0])).first()
+    # def get_queryset(self):
+    #     search = self.request.GET['search'] if 'search' in self.request.GET else 'all'
+    #     print(search)
+    #     query = Product.objects.all()
+    #     if search == 'all':
+    #         return query
+    #     try:
+    #         parsed = parser(search.lower())
+    #         print(parsed)
+    #         if parsed[1] > 0:
+    #             search_result = Product.objects.filter(
+    #                 pk=int(parsed[0])).first()
 
-                if search_result is not None:
-                    query = Product.objects.filter(
-                        category=search_result.category)
-                else:
-                    query = []
+    #             if search_result is not None:
+    #                 query = Product.objects.filter(
+    #                     category=search_result.category)
+    #             else:
+    #                 query = []
 
+    #         else:
+    #             query = []
+
+    #     except Exception as e:
+    #         # return redirect('/error')
+    #         print(e)
+
+    #     return query
+
+    def search(self, request):
+        query = request.GET.get('query')
+        print('Query', query)
+        if not query:
+            return Product.objects.all()
+            print('search all')
+        else:
+            search = Product.objects.filter(name__icontains=query)
+            if not search.exists():
+                print('Error page')
+                return redirect('snacks/error')
             else:
-                query = []
-
-        except Exception as e:
-            # return redirect('/error')
-            print(e)
-
-        return query
+                print('Query found')
+                return Product.objects.filter(category=search.category)
 
 
 class FavouritesListView(ListView):
