@@ -15,21 +15,23 @@
         <h1 class="content-justify-center mb-3">{{ details.name|title }}</h1>
     </div>
 
-    <div class="d-flex justify-content-around">
+    <div class="d-flex justify-content-around  m-2">
         <!-- Left col Logo Nutri-score -->
+        <div class="col-3">
         {% if details.nutriscore == 'a' %}
-            <img class="img-fluid col-2" src="{% static 'home/img/nutriscore-a.svg' %}" alt="Nutriscore A">
+            <img class="img-fluid" src="{% static 'home/img/nutriscore-a.svg' %}" alt="Nutriscore A">
         {% elif details.nutriscore == 'b' %}
-            <img class="img-fluid col-2" src="{% static 'home/img/nutriscore-b.svg' %}" alt="Nutriscore B">
+            <img class="img-fluid" src="{% static 'home/img/nutriscore-b.svg' %}" alt="Nutriscore B">
         {% elif details.nutriscore == 'c' %}
-            <img class="img-fluid col-2" style="max-width: 100% /9;  height: auto;" src="{% static 'home/img/nutriscore-c.svg' %}" alt="Nutriscore C">
+            <img class="img-fluid" src="{% static 'home/img/nutriscore-c.svg' %}" alt="Nutriscore C">
         {% elif details.nutriscore == 'd' %}
-            <img class="img-fluid col-2" src="{% static 'home/img/nutriscore-d.svg' %}" alt="Nutriscore D">
+            <img class="img-fluid" src="{% static 'home/img/nutriscore-d.svg' %}" alt="Nutriscore D">
         {% elif details.nutriscore == 'e' %}
-            <img class="img-fluid col-2" src="{% static 'home/img/nutriscore-e.svg' %}" alt="Nutriscore E">
+            <img class="img-fluid" src="{% static 'home/img/nutriscore-e.svg' %}" alt="Nutriscore E">
         {% else %}
-            <img class="img-fluid col-2" src="{% static 'home/img/nutriscore-u.png' %}" alt="Nutriscore Non Connue">
+            <img class="img-fluid" src="{% static 'home/img/nutriscore-u.png' %}" alt="Nutriscore Non Connue">
         {% endif %}
+        </div>
 
         <!-- Right colInfo from OFF API > 'repères nutritionels' -->
         <p class="col-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

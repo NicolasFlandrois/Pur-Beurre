@@ -8,7 +8,6 @@ from django.views.generic import (ListView,
                                   UpdateView,
                                   DeleteView)
 from .models import Product, Favourite
-from .forms import SearchForm
 
 
 def errorView(request):
@@ -33,65 +32,32 @@ class SearchListView(ListView):
     template_name = 'snacks/list.html'
     context_object_name = 'results'
     ordering = ['nutriscore']
-    paginate_by = 7
+    paginate_by = 4
 
-    # def get_queryset(self):
-    #     search = self.request.GET['search'] if 'search' in self.request.GET else 'all'
-    #     print(search)
-    #     query = Product.objects.all()
-    #     if search == 'all':
-    #         return query
-    #     try:
-    #         parsed = parser(search.lower())
-    #         print(parsed)
-    #         if parsed[1] > 0:
-    #             search_result = Product.objects.filter(
-    #                 pk=int(parsed[0])).first()
+    def get_queryset(self):
+        search = self.request.GET.get('search')
 
-    #             if search_result is not None:
-    #                 query = Product.objects.filter(
-    #                     category=search_result.category)
-    #             else:
-    #                 query = []
+        if not search:
+            return super().get_queryset()
 
-    #         else:
-    #             query = []
+        found = Product.objects.filter(name__icontains=search)
 
-    #     except Exception as e:
-    #         # return redirect('/error')
-    #         print(e)
+        if not found:
+            raise Exception('Produit Non Trouvé')
 
-    #     return query
-
-    def search(self, request):
-        query = request.GET.get('query')
-        print('Query', query)
-        if not query:
-            return Product.objects.all()
-            print('search all')
-        else:
-            search = Product.objects.filter(name__icontains=query)
-            if not search.exists():
-                print('Error page')
-                return redirect('snacks/error')
-            else:
-                print('Query found')
-                return Product.objects.filter(category=search.category)
+        cat = found[0].category
+        return Product.objects.filter(category=cat)
 
 
-class FavouritesListView(ListView):
+class FavouritesListView(ListView, LoginRequiredMixin):
     model = Favourite
     template_name = 'snacks/list.html'
     context_object_name = 'results'
     ordering = ['-date_added']
-    paginate_by = 6
+    paginate_by = 4
 
-    # Detect username from authenticated/url GET
-    # Use username to ORM filter favourite list by username
-    @login_required
     def get_queryset(self):
-        user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Favourite.objects.filter(user=user).order_by('-date_added')
+        return Favourite.objects.filter(user=self.request.user).order_by('-date_added')
 
 
 class ProductDetailView(DetailView):
