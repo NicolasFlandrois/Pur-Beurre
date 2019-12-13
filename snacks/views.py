@@ -7,7 +7,6 @@ from django.views.generic import (ListView,
                                   UpdateView,
                                   DeleteView)
 from .models import Product, Favourite
-from .parser import parser
 from .forms import SearchForm
 
 
@@ -92,8 +91,10 @@ class FavouritesListView(ListView):
 
 
 class ProductDetailView(DetailView):
-    """docstring for ProductDetailView"""
+    model = Product
+    template_name = 'snacks/details.html'
+    context_object_name = 'details'
 
-    def __init__(self, arg):
-        super(ProductDetailView, self).__init__()
-        self.arg = arg
+    def get_queryset(self):
+        prod_pk = self.kwargs.get('pk')
+        return Product.objects.filter(pk=prod_pk)
