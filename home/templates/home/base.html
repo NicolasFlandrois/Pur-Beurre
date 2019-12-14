@@ -47,14 +47,16 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-            <!-- Form to search a Product -->
+
+            <!-- Search a Product -->
             <div class="container-fluid d-flex justify-content-center p-2 mr-3" >
               <form action="/snacks/search/" method="GET">
-                <input type="text" name="search" placeholder="Produit à substituer">
-                <input type="submit" value="chercher">
+                <input type="text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer">
+                <input type="submit" class="btn btn-secondary mb-2" value="chercher">
               </form>
             </div>
-            <!-- End Search Form -->
+            <!-- End Search bar -->
+
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
