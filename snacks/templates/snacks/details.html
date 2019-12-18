@@ -34,12 +34,65 @@
         </div>
 
         <!-- Right colInfo from OFF API > 'repères nutritionels' -->
-        <p class="col-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <table>
+            <tr>
+                <th>Repères nutritionels pour 100g</th>
+            </tr>
+            <tr>
+                <td>Energie</td>
+                {% if nutriments.energy_100g %}
+                    <td>{{ nutriments.energy_100g }}</td>
+                    <td>{{ nutriments.energy_unit }}</td>
+                {% else %}
+                    <td>Non disponible</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>Matière Grasse</td>
+                {% if nutriments.fat_100g %}
+                    <td> {{ nutriments.fat_100g }} </td>
+                    <td>{% if nutriments.fat_unit %} {{ nutriments.fat_unit }} {% else %} g {% endif %}</td>
+                {% else %}
+                    <td> Non disponible </td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>Sucre</td>
+                {% if nutriments.sugars_100g %}
+                    <td>{{ nutriments.sugars_100g }}</td>
+                    <td>{% if nutriments.sugars_unit %} {{ nutriments.sugars_unit }} {% else %} g {% endif %}</td>
+                {% else %}
+                    <td>Non disponible</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>Fibres</td>
+                {% if nutriments.fiber_100g %}
+                    <td>{{ nutriments.fiber_100g }}</td>
+                    <td>{% if nutriments.fiber_unit %} {{ nutriments.fiber_unit }} {% else %} g {% endif %}</td>
+                {% else %}
+                    <td>Non disponible</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>Protéines</td>
+                {% if nutriments.proteins_100g %}
+                    <td>{{ nutriments.proteins_100g }}</td>
+                    <td>{% if nutriments.proteins_unit %} {{ nutriments.proteins_unit }} {% else %} g {% endif %}</td>
+                {% else %}
+                    <td>Non disponible</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>Sel</td>
+                {% if nutriments.salt_100g %}
+                    <td>{{ nutriments.salt_100g }}</td>
+                    <td>{% if nutriments.salt_unit %} {{ nutriments.salt_unit }} {% else %} g {% endif %}</td>
+                {% else %}
+                    <td>Non disponible</td>
+                {% endif %}
+            </tr>
+        </table>
 
     </div>
 
