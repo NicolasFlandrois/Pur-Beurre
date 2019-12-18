@@ -1,13 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from django.views.generic import (ListView,
                                   DetailView,
                                   CreateView,
                                   UpdateView,
                                   DeleteView)
 from .models import Product, Favourite
+from .nutriment import nutriments
 
 
 def errorView(request):
@@ -15,16 +15,9 @@ def errorView(request):
     return render(request, 'snacks/error.html', context)
 
 
-class AllListView(ListView):
-    model = Product
-    template_name = 'snacks/list.html'
-    context_object_name = 'results'
-    ordering = ['nutriscore']
-    paginate_by = 4
-
-    def allView(request):
-        print('All product')
-        return Product.objects.all()
+def allListView(request):
+    context = {}
+    return redirect('/snacks/search/?search=', context)
 
 
 class SearchListView(ListView):
@@ -43,7 +36,7 @@ class SearchListView(ListView):
         found = Product.objects.filter(name__icontains=search)
 
         if not found:
-            raise Exception('Produit Non Trouvé')
+            raise Exception('Error - Product Not Found')
 
         cat = found[0].category
         return Product.objects.filter(category=cat)
@@ -65,8 +58,11 @@ class ProductDetailView(DetailView):
     template_name = 'snacks/details.html'
     context_object_name = 'details'
 
-    # need to compile info from OFF's Json API
-
     def get_queryset(self):
         prod_pk = self.kwargs.get('pk')
         return Product.objects.filter(pk=prod_pk)
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context['nutriments'] = nutriments(context['details'].ean)
+        return context

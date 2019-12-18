@@ -33,5 +33,5 @@ urlpatterns = [
     path('error',
          snacks_views.errorView, name='snacks-error'),
 
-    path('', snacks_views.AllListView.as_view(), name='snacks-allsearch')
+    path('', snacks_views.allListView, name='snacks-allsearch')
 ]
