@@ -49,7 +49,7 @@ class SearchListView(ListView):
         return Product.objects.filter(category=cat)
 
 
-class FavouritesListView(ListView, LoginRequiredMixin):
+class FavouritesListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Favourite
     template_name = 'snacks/list.html'
     context_object_name = 'results'
