@@ -4,18 +4,28 @@
 
 {% block content %}
 
+    <style type="text/css">
+        .bgimg {
+            background-image: url({{ details.image.url }});
+            background-repeat: repeat;
+        }
+
+        .well {
+           background-color: rgba(245, 245, 245, 0.4);
+        }
+    </style>
+
     <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
-    <p class="col d-flex invisible" style="margin-bottom: 100px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
+    <p class="col d-flex invisible" style="margin-bottom: 75px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
     <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
 
-    <div class="d-flex justify-content-center">
-        <!-- Picture in Large Header's Background -->
-        <img class="img-fluid" src="{{ details.image.url }}" alt="{{ details.name }} Photo">
-        <!-- Name of product in this large header -->
-        <h1 class="content-justify-center mb-3">{{ details.name|title }}</h1>
+    <div class="container bgimg w-100 h-50">
+      <div class="row h-20 justify-content-center">
+        <h1 class="well font-weight-bold text-dark-70 m-4">{{ details.name|title }}</h1>
+      </div>
     </div>
 
-    <div class="d-flex justify-content-around  m-2">
+    <div class="d-flex justify-content-around  m-3">
         <!-- Left col Logo Nutri-score -->
         <div class="col-3">
         {% if details.nutriscore == 'a' %}
@@ -100,5 +110,9 @@
         <!-- Button centered > 'Voir la fiche open food fact' with link API EAN -->
         <a href="https://fr.openfoodfacts.org/produit/{{ details.ean }}" target="_blank" class="btn btn-primary m-1" title="Lien vers OpenFoodFacts: {{ details.name|title }}" alt="Lien vers OpenFoodFacts: {{ details.name|title }}">Voir la fiche d'OpenFoodFacts</a>
     </div>
+
+    <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
+    <p class="col d-flex invisible" style="margin-bottom: 75px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
+    <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
 
 {% endblock content %}
