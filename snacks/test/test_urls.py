@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from snacks.views import errorView, allListView
+from snacks.views import allListView
 from snacks.views import SearchListView, FavouritesListView, ProductDetailView
 
 
