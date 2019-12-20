@@ -2,81 +2,108 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block content %}
+{% block title %}
   <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
   <p class="col d-flex invisible" style="margin-bottom: 100px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
   <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
+  {% if title == 'Recherche' %}
+    <div class="d-flex justify-content-center">
+      <h1>Aliment recherché: {{ searched|title }}</h1>
+    </div>
+  {% elif title == 'Favoris' %}
+    <div class="d-flex justify-content-center">
+      <h1>Mes Favoris</h1>
+    </div>
+  {% else %}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
 
 
-  <div class="d-flex justify-content-center">
-    <!-- install a IF conditional statement, if page is search, display search title, elif favourite display favourite title -->
-    {% if title == 'Chercher' %} <!-- Still need to decide where/which variable -->
-    <!-- Install a background image -->
-    <h1>Aliment recherché: [NAME HERE/or search request] {{ page_title }}</h1>
-    <!-- Couleur text Blanc ou couleur contrasté -->
-    {% elif title == 'Mes Favoris' %}
-    <!-- Install a background image -->
-    <h1>Mes Favoris</h1>
-    <!-- Couleur text Blanc ou couleur contrasté -->
-    {% endif %}
-  </div>
+    {% if results %}
+      <!-- Search Content -->
+      <div class="d-flex justify-content-center">
+      {% for result in results %}
 
-  <div class="d-flex justify-content-center">
-    <!-- Search Content -->
-    {% for result in results %}
+          <div class="card m-3 col-2" style="width: 20rem; height: auto;">
+              {% if result.nutriscore == 'a' %}
+                  <img class="card-img-top" src="{% static 'home/img/nutriscore-a.svg' %}" alt="Nutriscore A">
+              {% elif result.nutriscore == 'b' %}
+                  <img class="card-img-top" src="{% static 'home/img/nutriscore-b.svg' %}" alt="Nutriscore B">
+              {% elif result.nutriscore == 'c' %}
+                  <img class="card-img-top" src="{% static 'home/img/nutriscore-c.svg' %}" alt="Nutriscore C">
+              {% elif result.nutriscore == 'd' %}
+                  <img class="card-img-top" src="{% static 'home/img/nutriscore-d.svg' %}" alt="Nutriscore D">
+              {% elif result.nutriscore == 'e' %}
+                  <img class="card-img-top" src="{% static 'home/img/nutriscore-e.svg' %}" alt="Nutriscore E">
+              {% else %}
+                  <img class="card-img-top" src="{% static 'home/img/nutriscore-u.png' %}" alt="Nutriscore Non Connue">
+              {% endif %}
+            <img class="card-img-top img-responsive" src="{{ result.image.url }}" alt="Card image cap">
+            <div class="card-body">
+                  <h5 class="card-title">{{ result.name|title }}</h5>
+                  <div class="d-flex">
+                    <a href="{% url 'snacks-detail' pk=result.pk %}" class="btn btn-primary m-1" target="_blank" title="Page Aliment {{ result.name }}" alt="Page Aliment {{ result.name }}">Page Aliment</a>
+                    {% if user.is_authenticated %}
+                      <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
+                    {% endif %}
+                  </div>
+              </div>
 
-        <div class="card m-3 col-2" style="width: 20rem; height: auto;">
-            {% if result.nutriscore == 'a' %}
-                <img class="card-img-top" src="{% static 'home/img/nutriscore-a.svg' %}" alt="Nutriscore A">
-            {% elif result.nutriscore == 'b' %}
-                <img class="card-img-top" src="{% static 'home/img/nutriscore-b.svg' %}" alt="Nutriscore B">
-            {% elif result.nutriscore == 'c' %}
-                <img class="card-img-top" src="{% static 'home/img/nutriscore-c.svg' %}" alt="Nutriscore C">
-            {% elif result.nutriscore == 'd' %}
-                <img class="card-img-top" src="{% static 'home/img/nutriscore-d.svg' %}" alt="Nutriscore D">
-            {% elif result.nutriscore == 'e' %}
-                <img class="card-img-top" src="{% static 'home/img/nutriscore-e.svg' %}" alt="Nutriscore E">
-            {% else %}
-                <img class="card-img-top" src="{% static 'home/img/nutriscore-u.png' %}" alt="Nutriscore Non Connue">
-            {% endif %}
-          <img class="card-img-top img-responsive" src="{{ result.image.url }}" alt="Card image cap">
-          <div class="card-body">
-                <h5 class="card-title">{{ result.name|title }}</h5>
-                <div class="d-flex">
-                  <a href="{% url 'snacks-detail' pk=result.pk %}" class="btn btn-primary m-1" target="_blank" title="Page Aliment {{ result.name }}" alt="Page Aliment {{ result.name }}">Page Aliment</a>
-                  {% if user.is_authenticated %}
-                    <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
-                  {% endif %}
-                </div>
+            {% if forloop.counter|divisibleby:3 %}<br> {% endif %}
             </div>
 
-          {% if forloop.counter|divisibleby:3 %}<br> {% endif %}
+      {% endfor %}
+      <!-- End Search Content -->
+      </div>
+    {% else %}
+      <!-- If research not found in database, or invalid entry -->
+        <style type="text/css">
+          .bgcol {
+              background-color: #345A61;
+          }
+        </style>
+
+        <div class="">
+          <div class="d-flex justify-content-center bgcol">
+              <h1 class="text-white-50 m-4" >Votre produit n'a pas été trouvé. Veuillez rééssayer.</h1>
           </div>
 
-    {% endfor %}
-
-    <!-- End Search Content -->
+          <div class="m-4">
+              <div class="d-flex justify-content-center"><h2>Nouvelle Recherche</h2></div>
+          <!-- Search a Product -->
+              <div class="container-fluid d-flex justify-content-center p-2 mr-3" >
+                  <form class="form-inline" action="/snacks/search/" method="GET">
+                      <input type="text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer" required="required" title="Produit à Substituer">
+                      <input type="submit" class="btn btn-secondary mb-2" value="chercher" title="Chercher">
+                  </form>
+              </div>
+          <!-- End Search bar -->
+          </div>
+        </div>
+    {% endif %}
   </div>
 
     <!-- Pagination -->
     {% if is_paginated %}
 
       {% if page_obj.has_previous %}
-        <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page=1">Première</a>
-        <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page={{ page_obj.previous_page_number }}">Précédent</a>
+        <a class="btn btn-outline-info mb-4" href="{{ url }}&page=1">Première</a>
+        <a class="btn btn-outline-info mb-4" href="{{ url }}&page={{ page_obj.previous_page_number }}">Précédent</a>
       {% endif %}
 
       {% for num in page_obj.paginator.page_range %}
         {% if page_obj.number == num %}
-          <a class="btn btn-info mb-4" href="{{ request.get_full_path }}&page={{ num }}">{{ num }}</a>
+          <a class="btn btn-info mb-4" href="{{ url }}&page={{ num }}">{{ num }}</a>
         {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page={{ num }}">{{ num }}</a>
+          <a class="btn btn-outline-info mb-4" href="{{ url }}&page={{ num }}">{{ num }}</a>
         {% endif %}
       {% endfor %}
 
       {% if page_obj.has_next %}
-        <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page={{ page_obj.next_page_number }}">Suivant</a>
-        <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page={{ page_obj.paginator.num_pages }}">Dernier</a>
+        <a class="btn btn-outline-info mb-4" href="{{ url }}&page={{ page_obj.next_page_number }}">Suivant</a>
+        <a class="btn btn-outline-info mb-4" href="{{ url }}&page={{ page_obj.paginator.num_pages }}">Dernier</a>
       {% endif %}
 
     {% endif %}

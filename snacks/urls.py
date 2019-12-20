@@ -30,8 +30,5 @@ urlpatterns = [
          snacks_views.SearchListView.as_view(),
          name='snacks-search'),
 
-    path('error',
-         snacks_views.errorView, name='snacks-error'),
-
     path('', snacks_views.allListView, name='snacks-allsearch')
 ]
