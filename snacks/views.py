@@ -27,6 +27,11 @@ class SearchListView(ListView):
     ordering = ['nutriscore']
     paginate_by = 4
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['url'] = f'/snacks/search/?search={self.request.GET.get("search")}'
+        return context
+
     def get_queryset(self):
         search = self.request.GET.get('search')
 
@@ -36,7 +41,7 @@ class SearchListView(ListView):
         found = Product.objects.filter(name__icontains=search)
 
         if not found:
-            raise Exception('Error - Product Not Found')
+            return Product.objects.none()
 
         cat = found[0].category
         return Product.objects.filter(category=cat)

@@ -2,26 +2,18 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block content %}
+{% block title %}
   <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
   <p class="col d-flex invisible" style="margin-bottom: 100px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
   <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
+TITRE ICI
+{% endblock %}
 
-
-  <div class="d-flex justify-content-center">
-    <!-- install a IF conditional statement, if page is search, display search title, elif favourite display favourite title -->
-    {% if title == 'Chercher' %} <!-- Still need to decide where/which variable -->
-    <!-- Install a background image -->
-    <h1>Aliment recherché: [NAME HERE/or search request] {{ page_title }}</h1>
-    <!-- Couleur text Blanc ou couleur contrasté -->
-    {% elif title == 'Mes Favoris' %}
-    <!-- Install a background image -->
-    <h1>Mes Favoris</h1>
-    <!-- Couleur text Blanc ou couleur contrasté -->
-    {% endif %}
-  </div>
+{% block content %}
 
   <div class="d-flex justify-content-center">
+
+    {% if results %}
     <!-- Search Content -->
     {% for result in results %}
 
@@ -56,27 +48,53 @@
     {% endfor %}
 
     <!-- End Search Content -->
+    {% else %}
+            <style type="text/css">
+          .bgcol {
+              background-color: #345A61;
+          }
+          </style>
+          <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+          <p class="col d-flex invisible" style="margin-bottom: 200px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
+          <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+
+          <div class="d-flex justify-content-center bgcol">
+              <h1 class="text-white-50 m-4" >Votre produit n'a pas été trouvé. Veuillez rééssayer.</h1>
+          </div>
+
+          <div class="m-4">
+              <div class="d-flex justify-content-center"><h2>Nouvelle Recherche</h2></div>
+          <!-- Search a Product -->
+              <div class="container-fluid d-flex justify-content-center p-2 mr-3" >
+                  <form class="form-inline" action="/snacks/search/" method="GET">
+                      <input type="text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer" required="required" title="Produit à Substituer">
+                      <input type="submit" class="btn btn-secondary mb-2" value="chercher" title="Chercher">
+                  </form>
+        </div>
+    <!-- End Search bar -->
+    </div>
+    {% endif %}
   </div>
 
     <!-- Pagination -->
     {% if is_paginated %}
 
       {% if page_obj.has_previous %}
-        <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page=1">Première</a>
-        <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page={{ page_obj.previous_page_number }}">Précédent</a>
+        <a class="btn btn-outline-info mb-4" href="{{ url }}&page=1">Première</a>
+        <a class="btn btn-outline-info mb-4" href="{{ url }}&page={{ page_obj.previous_page_number }}">Précédent</a>
       {% endif %}
 
       {% for num in page_obj.paginator.page_range %}
         {% if page_obj.number == num %}
-          <a class="btn btn-info mb-4" href="{{ request.get_full_path }}&page={{ num }}">{{ num }}</a>
+          <a class="btn btn-info mb-4" href="{{ url }}&page={{ num }}">{{ num }}</a>
         {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page={{ num }}">{{ num }}</a>
+          <a class="btn btn-outline-info mb-4" href="{{ url }}&page={{ num }}">{{ num }}</a>
         {% endif %}
       {% endfor %}
 
       {% if page_obj.has_next %}
-        <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page={{ page_obj.next_page_number }}">Suivant</a>
-        <a class="btn btn-outline-info mb-4" href="{{ request.get_full_path }}&page={{ page_obj.paginator.num_pages }}">Dernier</a>
+        <a class="btn btn-outline-info mb-4" href="{{ url }}&page={{ page_obj.next_page_number }}">Suivant</a>
+        <a class="btn btn-outline-info mb-4" href="{{ url }}&page={{ page_obj.paginator.num_pages }}">Dernier</a>
       {% endif %}
 
     {% endif %}
