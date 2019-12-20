@@ -10,11 +10,6 @@ from .models import Product, Favourite
 from .nutriment import nutriments
 
 
-def errorView(request):
-    context = {}
-    return render(request, 'snacks/error.html', context)
-
-
 def allListView(request):
     context = {}
     return redirect('/snacks/search/?search=', context)
@@ -30,6 +25,7 @@ class SearchListView(ListView):
     def get_context_data(self):
         context = super().get_context_data()
         context['url'] = f'/snacks/search/?search={self.request.GET.get("search")}'
+        context['searched'] = self.request.GET.get('search')
         return context
 
     def get_queryset(self):

@@ -12,10 +12,6 @@ class TestUrls(SimpleTestCase):
         url = reverse('snacks-allsearch')
         self.assertEquals(resolve(url).func, allListView)
 
-    def test_error_url_resolves(self):
-        url = reverse('snacks-error')
-        self.assertEquals(resolve(url).func, errorView)
-
     # Testing Class based views
     def test_SearchListView_url_resolves(self):
         url = reverse('snacks-search')
