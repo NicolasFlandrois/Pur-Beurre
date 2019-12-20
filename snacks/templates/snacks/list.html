@@ -6,9 +6,16 @@
   <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
   <p class="col d-flex invisible" style="margin-bottom: 100px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
   <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
-  <div class="d-flex justify-content-center">
-    <h1>Aliment recherché: {{ searched|title }}</h1>
-  </div>
+  {% if title == 'Recherche' %}
+    <div class="d-flex justify-content-center">
+      <h1>Aliment recherché: {{ searched|title }}</h1>
+    </div>
+  {% elif title == 'Favoris' %}
+    <div class="d-flex justify-content-center">
+      <h1>Mes Favoris</h1>
+    </div>
+  {% else %}
+  {% endif %}
 {% endblock %}
 
 {% block content %}

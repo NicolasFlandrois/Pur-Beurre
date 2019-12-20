@@ -26,6 +26,7 @@ class SearchListView(ListView):
         context = super().get_context_data()
         context['url'] = f'/snacks/search/?search={self.request.GET.get("search")}'
         context['searched'] = self.request.GET.get('search')
+        context['title'] = 'Recherche'
         return context
 
     def get_queryset(self):
@@ -50,8 +51,18 @@ class FavouritesListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     ordering = ['-date_added']
     paginate_by = 4
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['title'] = 'Favoris'
+        return context
+
     def get_queryset(self):
         return Favourite.objects.filter(user=self.request.user).order_by('-date_added')
+
+    def test_func(self):
+        if self.request.user:
+            return True
+        return False
 
 
 class ProductDetailView(DetailView):
@@ -66,4 +77,5 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         context['nutriments'] = nutriments(context['details'].ean)
+        context['title'] = 'Fiche produit'
         return context
