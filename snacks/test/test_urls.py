@@ -7,12 +7,12 @@ from snacks.views import SearchListView, FavouritesListView, ProductDetailView
 class TestUrls(SimpleTestCase):
     """Class Test - TestUrls - Testing URLs"""
 
-    # Testing Function based views
+    # Testing Function based url
     def test_search_all_view_url_resolves(self):
         url = reverse('snacks-allsearch')
         self.assertEquals(resolve(url).func, allListView)
 
-    # Testing Class based views
+    # Testing Class based url
     def test_SearchListView_url_resolves(self):
         url = reverse('snacks-search')
         self.assertEquals(resolve(url).func.view_class, SearchListView)
