@@ -1,11 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
-from django.views.generic import (ListView,
-                                  DetailView,
-                                  CreateView,
-                                  UpdateView,
-                                  DeleteView)
+from django.shortcuts import redirect
+from django.views.generic import ListView, DetailView
 from .models import Product, Favourite
 from .nutriment import nutriments
 
@@ -57,7 +52,8 @@ class FavouritesListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
         return context
 
     def get_queryset(self):
-        return Favourite.objects.filter(user=self.request.user).order_by('-date_added')
+        return Favourite.objects.filter(
+            user=self.request.user).order_by('-date_added')
 
     def test_func(self):
         if self.request.user:
