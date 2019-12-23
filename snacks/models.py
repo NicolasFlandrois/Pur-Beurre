@@ -20,7 +20,7 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         """Provides absolute URL for product detail page"""
-        return reverse('product-detail', kwargs={'pk': self.pk})
+        return reverse('snacks-detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
         """Overwrite the save() method with custom informations"""
@@ -47,4 +47,4 @@ class Favourite(models.Model):
 
     def get_absolute_url(self):
         """__str__ display when calling the object in consol"""
-        return reverse('favourite-detail', kwargs={'pk': self.pk})
+        return reverse('snacks-detail', kwargs={'pk': self.pk})
