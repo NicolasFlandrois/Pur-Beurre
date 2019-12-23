@@ -6,7 +6,7 @@ from PIL import Image
 
 
 class Product(models.Model):
-    """docstring for Products"""
+    """Class Models for Products"""
     ean = models.CharField(max_length=13)
     name = models.CharField(max_length=50)
     category = models.CharField(max_length=50)
@@ -15,12 +15,15 @@ class Product(models.Model):
     nutriscore = models.CharField(max_length=1)
 
     def __str__(self):
+        """__str__ display when calling the object in consol"""
         return self.name
 
     def get_absolute_url(self):
+        """Provides absolute URL for product detail page"""
         return reverse('product-detail', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
+        """Overwrite the save() method with custom informations"""
         super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
@@ -32,14 +35,16 @@ class Product(models.Model):
 
 
 class Favourite(models.Model):
-    """docstring for Favourite"""
+    """Class Models for Favourite"""
     date_added = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
+        """__str__ display when calling the object in consol"""
         return {"User": self.user, "Favourite": self.product,
                 "Date": self.date_added}
 
     def get_absolute_url(self):
+        """__str__ display when calling the object in consol"""
         return reverse('favourite-detail', kwargs={'pk': self.pk})
