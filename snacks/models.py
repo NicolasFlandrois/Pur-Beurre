@@ -11,7 +11,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     category = models.CharField(max_length=50)
     image = models.ImageField(
-        default='products_default.jpg', upload_to='products_pics')
+        default='product_default.png', upload_to='products_pics')
     nutriscore = models.CharField(max_length=1)
 
     def __str__(self):
