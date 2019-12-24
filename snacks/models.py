@@ -46,5 +46,5 @@ class Favourite(models.Model):
                 "Date": self.date_added}
 
     def get_absolute_url(self):
-        """__str__ display when calling the object in consol"""
+        """calling the object detailed page's absolute url"""
         return reverse('snacks-detail', kwargs={'pk': self.pk})

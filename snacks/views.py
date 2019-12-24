@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from .models import Product, Favourite
 from .nutriment import nutriments
 
@@ -39,6 +39,22 @@ class SearchListView(ListView):
         return Product.objects.filter(category=cat)
 
 
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'snacks/details.html'
+    context_object_name = 'details'
+
+    def get_queryset(self):
+        prod_pk = self.kwargs.get('pk')
+        return Product.objects.filter(pk=prod_pk)
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context['nutriments'] = nutriments(context['details'].ean)
+        context['title'] = 'Fiche produit'
+        return context
+
+
 class FavouritesListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Favourite
     template_name = 'snacks/list.html'
@@ -61,17 +77,21 @@ class FavouritesListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
         return False
 
 
-class ProductDetailView(DetailView):
-    model = Product
-    template_name = 'snacks/details.html'
-    context_object_name = 'details'
+class FavCreateView(LoginRequiredMixin, CreateView):
+    model = Favourite
+    # fields = ['title', 'content']
 
-    def get_queryset(self):
-        prod_pk = self.kwargs.get('pk')
-        return Product.objects.filter(pk=prod_pk)
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        context = super(ProductDetailView, self).get_context_data(**kwargs)
-        context['nutriments'] = nutriments(context['details'].ean)
-        context['title'] = 'Fiche produit'
-        return context
+
+class FavDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Favourite
+    # success_url = '/'
+
+    def test_func(self):
+        fav = self.get_object()
+        if self.request.user == fav.user:
+            return True
+        return False
