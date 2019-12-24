@@ -32,7 +32,7 @@ class TestViews(TestCase):
 
         self.fav_1 = Favourite.objects.create(
             pk=1,
-            date_added='2019-12-20 09:00:00',
+            date_added='2019-12-24 16:17:11.856150+00:00',
             user=self.user_1,
             product=self.prod_1
         )
