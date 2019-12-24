@@ -77,21 +77,55 @@ class FavouritesListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
         return False
 
 
-class FavCreateView(LoginRequiredMixin, CreateView):
-    model = Favourite
-    # fields = ['title', 'content']
+# class FavCreateView(LoginRequiredMixin, CreateView):
+#     model = Favourite
+#     # fields = ['title', 'content']
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+#     def form_valid(self, form):
+#         form.instance.user = self.request.user.pk
+#         form.instance.product = self.request.product.pk
+#         return super().form_valid(form)
 
 
-class FavDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Favourite
-    # success_url = '/'
+# class FavDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+#     model = Favourite
+#     # success_url = '/'
 
-    def test_func(self):
-        fav = self.get_object()
-        if self.request.user == fav.user:
-            return True
-        return False
+#     def test_func(self):
+#         fav = self.get_object()
+#         if self.request.user == fav.user:
+#             return True
+#         return False
+
+
+def fav_add(request):
+    fav = Favourite(user=request.user, product=request.product)
+    fav.save()
+
+
+def fav_del(request):
+    fav = Favourite(pk=request.pk)
+    fav.delete()
+# >>> from snacks.models import Favourite
+# >>> from snacks.models import Product
+# >>> from django.contrib.auth.models import User
+# >>> user = User.objects.get(pk=5)
+# >>> user
+# <User: admin-PurBeurre>
+# >>> prod = Product.objects.get(pk=113)
+# >>> prod
+# <Product: patamilka - milka>
+# >>> Favourite.objects.count()
+# 1
+# >>> fav = Favourite(user=user, product=prod)
+# >>> fav
+# <Favourite: User: admin-PurBeurre, Favourite: patamilka - milka, Date: 2019-12-24 16:41:30.428154+00:00>
+# >>> fav.save()
+# >>> Favourite.objects.count()
+# 2
+# >>> fav_del = Favourite.objects.get(pk=2)
+# >>> fav_del.delete()
+# (1, {'snacks.Favourite': 1})
+# >>> Favourite.objects.count()
+# 1
+# >>> fav.save()

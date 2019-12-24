@@ -42,8 +42,8 @@ class Favourite(models.Model):
 
     def __str__(self):
         """__str__ display when calling the object in consol"""
-        return {"User": self.user, "Favourite": self.product,
-                "Date": self.date_added}
+        return f"User: {self.user}, Favourite: {self.product}, \
+Date: {self.date_added}"
 
     def get_absolute_url(self):
         """calling the object detailed page's absolute url"""
