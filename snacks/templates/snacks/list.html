@@ -48,7 +48,7 @@
                   <div class="d-flex">
                     <a href="{% url 'snacks-detail' pk=result.product.pk %}" class="btn btn-primary m-1" target="_blank" title="Page Aliment {{ result.product.name }}" alt="Page Aliment {{ result.product.name }}">Page Aliment</a>
                     {% if user.is_authenticated %}
-                      <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
+                      <a href="{% url 'fav-add' pk=result.product.pk %}" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
                     {% endif %}
                   </div>
               </div>
@@ -78,7 +78,7 @@
                   <div class="d-flex">
                     <a href="{% url 'snacks-detail' pk=result.pk %}" class="btn btn-primary m-1" target="_blank" title="Page Aliment {{ result.name }}" alt="Page Aliment {{ result.name }}">Page Aliment</a>
                     {% if user.is_authenticated %}
-                      <a href="#" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
+                      <a href="{% url 'fav-add' pk=result.pk %}" title="Ajouter à mes Aliments" alt="Ajouter à mes Aliments"><i style="font-size: 3em;" class="far fa-save"></i></a>
                     {% endif %}
                   </div>
               </div>

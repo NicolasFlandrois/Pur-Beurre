@@ -1,6 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
-from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.views import View
+from django.contrib import auth
+from django.http import HttpResponseRedirect
+from django.views.generic import ListView, DetailView  # , CreateView, DeleteView
 from .models import Product, Favourite
 from .nutriment import nutriments
 
@@ -77,55 +80,59 @@ class FavouritesListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
         return False
 
 
-# class FavCreateView(LoginRequiredMixin, CreateView):
-#     model = Favourite
-#     # fields = ['title', 'content']
+class FavAddView(LoginRequiredMixin, View):
+    model = Favourite
 
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user.pk
-#         form.instance.product = self.request.product.pk
-#         return super().form_valid(form)
+    def get(self, request, pk):
 
+        if not pk:
+            return HttpResponseRedirect('/favourites')
 
-# class FavDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-#     model = Favourite
-#     # success_url = '/'
+        prod = Product.objects.get(pk=pk)
 
-#     def test_func(self):
-#         fav = self.get_object()
-#         if self.request.user == fav.user:
-#             return True
-#         return False
+        if not prod:
+            return HttpResponseRedirect('/favourites')
 
+        fav_new, created = Favourite.objects.get_or_create(
+            user=auth.get_user(request),
+            product=prod)
 
-def fav_add(request):
-    fav = Favourite(user=request.user, product=request.product)
-    fav.save()
+        if not created:
+            pass
 
+        return HttpResponseRedirect('/snacks/favourites')
+        # ISSUE: When arbitrary want to add a prod that does not exists in DB.prod_tbl, ERROR page.. But I want it to redirect user to Fav page instead
 
-def fav_del(request):
-    fav = Favourite(pk=request.pk)
-    fav.delete()
-# >>> from snacks.models import Favourite
-# >>> from snacks.models import Product
-# >>> from django.contrib.auth.models import User
-# >>> user = User.objects.get(pk=5)
-# >>> user
-# <User: admin-PurBeurre>
-# >>> prod = Product.objects.get(pk=113)
-# >>> prod
-# <Product: patamilka - milka>
-# >>> Favourite.objects.count()
-# 1
-# >>> fav = Favourite(user=user, product=prod)
-# >>> fav
-# <Favourite: User: admin-PurBeurre, Favourite: patamilka - milka, Date: 2019-12-24 16:41:30.428154+00:00>
-# >>> fav.save()
-# >>> Favourite.objects.count()
-# 2
-# >>> fav_del = Favourite.objects.get(pk=2)
-# >>> fav_del.delete()
-# (1, {'snacks.Favourite': 1})
-# >>> Favourite.objects.count()
-# 1
-# >>> fav.save()
+class FavDeleteView(LoginRequiredMixin, UserPassesTestMixin, View):
+    model = Favourite
+
+    def get(self, request, pk):
+
+        if not pk:
+            return HttpResponseRedirect('/favourites')
+
+        prod = Product.objects.get(pk=pk)
+
+        if not prod:
+            return HttpResponseRedirect('/favourites')
+
+        try:
+            fav_del = Favourite.objects.get(
+                user=auth.get_user(request),
+                product=prod)
+            fav_del.delete()
+            # return HttpResponseRedirect('/snacks/favourites')
+        except:
+            pass
+            # except Favourite.DoesNotExist:
+            #     fav_del = None
+        return HttpResponseRedirect('/snacks/favourites')
+
+        # ISSUE: When arbitrary want to delete a fav that does not exists in DB.fav_tbl, ERROR page.. But I want it to redirect user to Fav page instead
+
+    def test_func(self):
+        prod_pk = self.kwargs.get('pk')
+        fav = Favourite.objects.get(product=prod_pk)
+        if self.request.user == fav.user:
+            return True
+        return False

@@ -22,6 +22,12 @@ urlpatterns = [
          snacks_views.FavouritesListView.as_view(),
          name='snacks-favourites'),
 
+    path('fav_add/<int:pk>/', snacks_views.FavAddView.as_view(),
+         name='fav-add'),
+
+    path('fav_del/<int:pk>/', snacks_views.FavDeleteView.as_view(),
+         name='fav-del'),
+
     path('product/<int:pk>/',
          snacks_views.ProductDetailView.as_view(),
          name='snacks-detail'),
