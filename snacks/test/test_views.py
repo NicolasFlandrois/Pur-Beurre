@@ -27,8 +27,7 @@ class TestViews(TestCase):
         )
 
         self.user_1 = User.objects.create_user(
-            pk=1,
-            username='Fav Models Unit Test 1',
+            username='testuser', password='12345',
             email='boggusmail@boggusmail.net'
         )
 
@@ -58,13 +57,14 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'snacks/details.html')
 
-    # def test_FavouritesListView_GET(self):
-    #     """Testing the FavouritesListView GET method's class"""
-    #     response = self.client.get(self.fav_url)
-    #     self.assertEquals(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'snacks/list.html')
-    #     # This test doesn't work as it needs to pass LoginRequiredMixin, UserPassesTestMixin tests
-    #     # Without param variables matching thoses requisits, the server revert a 302 Error and response no templates
+    def test_FavouritesListView_GET(self):
+        """Testing the FavouritesListView GET method's class"""
+        logged_in = self.client.login(username='testuser', password='12345')
+        response = self.client.get(self.fav_url)
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'snacks/list.html')
+        # This test doesn't work as it needs to pass LoginRequiredMixin, UserPassesTestMixin tests
+        # Without param variables matching thoses requisits, the server revert a 302 Error and response no templates
 
     def test_FavAddView_GET(self):
         """Testing the FavAddView GET method's class"""
