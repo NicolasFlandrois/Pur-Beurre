@@ -8,8 +8,8 @@ class TestViews(TestCase):
     def setUp(self):
         """Set Up variables used in this test"""
         self.client = Client()
-        self.home_url = reverse('home-home')
-        self.legal_url = reverse('home-legal')
+        self.home_url = reverse('home')
+        self.legal_url = reverse('legal')
 
     # Testing Function based views
     def test_home_GET(self):

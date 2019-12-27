@@ -37,8 +37,8 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <!-- Left Side -->
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="{% url 'home-home' %}" title="Accueil" alt="[LOGO]"><img src="{% static 'home/img/logo_pur_beurre.png' %}" alt="Pur Beurre Logo" height="50em;" width="auto"></a>
-      <a class="navbar-brand js-scroll-trigger" href="{% url 'home-home' %}" title="Accueil" alt="Pur Beurre">Pur Beurre</a>
+      <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}" title="Accueil" alt="[LOGO]"><img src="{% static 'home/img/logo_pur_beurre.png' %}" alt="Pur Beurre Logo" height="50em;" width="auto"></a>
+      <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}" title="Accueil" alt="Pur Beurre">Pur Beurre</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -92,11 +92,11 @@
   <footer class="footer fixed-bottom bg-light">
     <div class="container d-flex footer_block">
       <div class="m-3 mx-auto small text-center text-gray-dark">
-        <a href="{% url 'home-legal' %}">Mentions Legales</a>
+        <a href="{% url 'legal' %}">Mentions Legales</a>
       </div>
       <div class="m-3 mx-auto small text-center text-gray-dark">Copyright &copy; 2019 - Nicolas Flandrois</div>
       <div class="m-3 mx-auto small text-center text-gray-dark">
-        <a href="{% url 'home-home' %}?#contact">Contact</a>
+        <a href="{% url 'home' %}?#contact">Contact</a>
       </div>
     </div>
   </footer>
