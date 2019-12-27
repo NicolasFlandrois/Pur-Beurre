@@ -1,7 +1,11 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from snacks.views import allListView
-from snacks.views import SearchListView, FavouritesListView, ProductDetailView
+from snacks.views import (SearchListView,
+                          FavouritesListView,
+                          ProductDetailView,
+                          FavAddView,
+                          FavDeleteView)
 
 
 class TestUrls(SimpleTestCase):
@@ -9,18 +13,26 @@ class TestUrls(SimpleTestCase):
 
     # Testing Function based url
     def test_search_all_view_url_resolves(self):
-        url = reverse('snacks-allsearch')
+        url = reverse('allsearch')
         self.assertEquals(resolve(url).func, allListView)
 
     # Testing Class based url
     def test_SearchListView_url_resolves(self):
-        url = reverse('snacks-search')
+        url = reverse('search')
         self.assertEquals(resolve(url).func.view_class, SearchListView)
 
     def test_FavouritesListView_url_resolves(self):
-        url = reverse('snacks-favourites')
+        url = reverse('favourites')
         self.assertEquals(resolve(url).func.view_class, FavouritesListView)
 
     def test_ProductDetailView_url_resolves(self):
-        url = reverse('snacks-detail', args=['9'])
+        url = reverse('detail', args=['9'])
         self.assertEquals(resolve(url).func.view_class, ProductDetailView)
+
+    def test_FavAddView_url_resolves(self):
+        url = reverse('fav-add', args=['9'])
+        self.assertEquals(resolve(url).func.view_class, FavAddView)
+
+    def test_FavDeleteView_url_resolves(self):
+        url = reverse('fav-del', args=['9'])
+        self.assertEquals(resolve(url).func.view_class, FavDeleteView)

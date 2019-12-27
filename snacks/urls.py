@@ -20,7 +20,7 @@ from . import views as snacks_views
 urlpatterns = [
     path('favourites/',
          snacks_views.FavouritesListView.as_view(),
-         name='snacks-favourites'),
+         name='favourites'),
 
     path('fav_add/<int:pk>/', snacks_views.FavAddView.as_view(),
          name='fav-add'),
@@ -30,11 +30,11 @@ urlpatterns = [
 
     path('product/<int:pk>/',
          snacks_views.ProductDetailView.as_view(),
-         name='snacks-detail'),
+         name='detail'),
 
     path('search/',
          snacks_views.SearchListView.as_view(),
-         name='snacks-search'),
+         name='search'),
 
-    path('', snacks_views.allListView, name='snacks-allsearch')
+    path('', snacks_views.allListView, name='allsearch')
 ]
