@@ -67,6 +67,7 @@ class FavouritesListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     def get_context_data(self):
         context = super().get_context_data()
         context['title'] = 'Favoris'
+        context['url'] = f'/snacks/favourites/?'
         return context
 
     def get_queryset(self):
