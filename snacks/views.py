@@ -1,9 +1,9 @@
+from django.contrib import auth
+from django.http import HttpResponseRedirect
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.views import View
-from django.contrib import auth
-from django.http import HttpResponseRedirect
-from django.views.generic import ListView, DetailView  # , CreateView, DeleteView
 from .models import Product, Favourite
 from .nutriment import nutriments
 
@@ -17,7 +17,6 @@ class SearchListView(ListView):
     model = Product
     template_name = 'snacks/list.html'
     context_object_name = 'results'
-    ordering = ['nutriscore']
     paginate_by = 4
 
     def get_context_data(self):
@@ -39,7 +38,7 @@ class SearchListView(ListView):
             return Product.objects.none()
 
         cat = found[0].category
-        return Product.objects.filter(category=cat)
+        return Product.objects.filter(category=cat).order_by('nutriscore')
 
 
 class ProductDetailView(DetailView):
@@ -102,6 +101,7 @@ class FavAddView(LoginRequiredMixin, View):
 
         return HttpResponseRedirect('/snacks/favourites')
         # ISSUE: When arbitrary want to add a prod that does not exists in DB.prod_tbl, ERROR page.. But I want it to redirect user to Fav page instead
+
 
 class FavDeleteView(LoginRequiredMixin, UserPassesTestMixin, View):
     model = Favourite
