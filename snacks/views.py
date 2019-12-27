@@ -29,11 +29,8 @@ class SearchListView(ListView):
     def get_queryset(self):
         search = self.request.GET.get('search')
 
-        if not search:
-            return super().get_queryset()
-
-        elif search == ' ':
-            return super().get_queryset()
+        if not search or search == ' ':
+            return super().get_queryset().order_by('nutriscore')
 
         found = Product.objects.filter(name__icontains=search)
 
