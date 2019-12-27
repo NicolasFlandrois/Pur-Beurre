@@ -7,9 +7,9 @@ class TestUrls(SimpleTestCase):
     """Class Test - TestUrls"""
 
     def test_home(self):
-        url = reverse('home-home')
+        url = reverse('home')
         self.assertEquals(resolve(url).func, home)
 
     def test_legal(self):
-        url = reverse('home-legal')
+        url = reverse('legal')
         self.assertEquals(resolve(url).func, legal)

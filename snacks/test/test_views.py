@@ -10,10 +10,12 @@ class TestViews(TestCase):
     def setUp(self):
         """Set Up variables used in this test"""
         self.client = Client()
-        self.allsearch_url = reverse('snacks-allsearch')
-        self.searchlist_url = reverse('snacks-search')
-        self.detail_url = reverse('snacks-detail', args=['1'])
-        self.fav_url = reverse('snacks-favourites')
+        self.allsearch_url = reverse('allsearch')
+        self.searchlist_url = reverse('search')
+        self.detail_url = reverse('detail', args=['1'])
+        self.fav_url = reverse('favourites')
+        self.fav_add_url = reverse('fav-add', args=['9'])
+        self.fav_del_url = reverse('fav-del', args=['9'])
 
         self.prod_1 = Product.objects.create(
             pk=1,
@@ -63,6 +65,22 @@ class TestViews(TestCase):
     #     self.assertTemplateUsed(response, 'snacks/list.html')
     #     # This test doesn't work as it needs to pass LoginRequiredMixin, UserPassesTestMixin tests
     #     # Without param variables matching thoses requisits, the server revert a 302 Error and response no templates
+
+    def test_FavAddView_GET(self):
+        """Testing the FavAddView GET method's class"""
+        response = self.client.get(self.fav_add_url)
+        self.assertEquals(response.status_code, 302)
+        # self.assertTemplateUsed(response, 'snacks/details.html')
+        # This test doesn't work as it needs to pass LoginRequiredMixin, UserPassesTestMixin tests
+        # Without param variables matching thoses requisits, the server revert a 302 Error and response no templates
+
+    def test_FavDeleteView_GET(self):
+        """Testing the FavDeleteView GET method's class"""
+        response = self.client.get(self.fav_del_url)
+        self.assertEquals(response.status_code, 302)
+        # self.assertTemplateUsed(response, 'snacks/details.html')
+        # This test doesn't work as it needs to pass LoginRequiredMixin, UserPassesTestMixin tests
+        # Without param variables matching thoses requisits, the server revert a 302 Error and response no templates
 
 
 # How to test the json API with Open Food Facts?
