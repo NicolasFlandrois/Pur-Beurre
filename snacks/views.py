@@ -17,7 +17,7 @@ class SearchListView(ListView):
     model = Product
     template_name = 'snacks/list.html'
     context_object_name = 'results'
-    paginate_by = 4
+    paginate_by = 6
 
     def get_context_data(self):
         context = super().get_context_data()
@@ -62,7 +62,7 @@ class FavouritesListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     template_name = 'snacks/list.html'
     context_object_name = 'results'
     ordering = ['-date_added']
-    paginate_by = 4
+    paginate_by = 6
 
     def get_context_data(self):
         context = super().get_context_data()

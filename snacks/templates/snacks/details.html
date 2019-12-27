@@ -7,7 +7,10 @@
     <style type="text/css">
         .bgimg {
             background-image: url({{ details.image.url }});
+            background-color: #000000;
             background-repeat: repeat;
+            background-position: center;
+            background-size: contain;
         }
 
         .well {
@@ -16,12 +19,12 @@
     </style>
 
     <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
-    <p class="col d-flex invisible" style="margin-bottom: 75px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
+    <p class="col d-flex invisible" style="margin-bottom: 70px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
     <!-- Do not remove - Ensure dialogue not hidden by Header's Navbar -->
 
-    <div class="container bgimg w-100 h-50">
+    <div class="container-fluid bgimg w-100 h-50">
       <div class="row h-20 justify-content-center">
-        <h1 class="well font-weight-bold text-dark-70 m-4">{{ details.name|title }}</h1>
+        <h1 class="well font-weight-bold text-center text-dark-70 m-4">{{ details.name|title }}</h1>
       </div>
     </div>
 
