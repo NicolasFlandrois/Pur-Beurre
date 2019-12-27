@@ -34,7 +34,7 @@
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+  <nav class="container-fluid navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <!-- Left Side -->
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}" title="Accueil" alt="[LOGO]"><img src="{% static 'home/img/logo_pur_beurre.png' %}" alt="Pur Beurre Logo" height="50em;" width="auto"></a>
@@ -43,20 +43,19 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
+
       <!-- Right Side -->
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item">
-
             <!-- Search a Product -->
-                <div class="container-fluid d-flex justify-content-center p-2 mr-3" >
-                    <form class="form-inline" action="/snacks/search/" method="GET">
-                        <input type="text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer" required="required" title="Produit à Substituer">
-                        <input type="submit" class="btn btn-secondary mb-2" value="chercher" title="Chercher">
-                    </form>
-                </div>
+            <div class="container-fluid d-flex justify-content-center p-2 mr-3" >
+                <form class="form-inline" action="/snacks/search/" method="GET">
+                    <input type="text" name="search" class="form-control mb-2 mr-sm-2" placeholder="Produit à substituer" required="required" title="Produit à Substituer">
+                    <input type="submit" class="btn btn-secondary mb-2" value="chercher" title="Chercher">
+                </form>
+            </div>
             <!-- End Search bar -->
-
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
@@ -101,6 +100,16 @@
     </div>
   </footer>
 
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'home/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'home/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'home/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'home/js/creative.min.js' %}"></script>
 
 </body>
 

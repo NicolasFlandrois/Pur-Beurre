@@ -2,8 +2,7 @@
 {% load static %}
 
 {% block content %}
-  <!-- Masthead -->
-  <!-- Search Section -->
+  <!-- Masthead with Search Section-->
   <header class="masthead">
     <div class="container h-100">
       <div class="row h-100 align-items-center justify-content-center text-center">
@@ -30,10 +29,9 @@
 
   <!-- About Section -->
   <section class="page-section bg-primary" id="about">
-    <div class="container d-flex">
-      <img src="{% static 'home/img/remy.png' %}" height="100%" width="auto" alt="Rémy"> <!-- Remy Photo -->
+    <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 text-center">
           <h2 class="text-white mt-0">Remy & Colette!</h2>
           <hr class="divider light my-4">
           <h3 class="text-white-50 mb-4">De la ratatouille aux croissants</h3>
@@ -44,7 +42,10 @@
           <p class="text-white-50 mb-4">"Pour ma part je me rendais déjà dans bien des magasins car j'aime beaucoup me balader, surtout dans les caves et les cuisines. Je connaissais par coeur le contenu des boutiques bio (dont je raffole) ainsi que les ingrédients de tous les aliments vendus. Lorsque Colette m'a demandé si elle pouvait remplacer son Nutella matinal par un aliment plus sain, je savais tout de suite où le trouver. L'idée de Pur Beurre était née !"</p>
         </div>
       </div>
-      <img src="{% static 'home/img/colette.png' %}" height="100%" width="auto" alt="Colette Tatou"> <!-- Colette Tatou Photo -->
+      <div class="d-md-flex d-lg-flex d-xl-flex justify-content-center text-center">
+        <img src="{% static 'home/img/colette.png' %}" class="mx-auto w-50" alt="Colette Tatou"> <!-- Colette Tatou Photo -->
+        <img src="{% static 'home/img/remy.png' %}" class="mx-auto w-50" alt="Rémy"> <!-- Remy Photo -->
+      </div>
     </div>
   </section>
 
