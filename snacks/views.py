@@ -32,6 +32,9 @@ class SearchListView(ListView):
         if not search:
             return super().get_queryset()
 
+        elif search == ' ':
+            return super().get_queryset()
+
         found = Product.objects.filter(name__icontains=search)
 
         if not found:
