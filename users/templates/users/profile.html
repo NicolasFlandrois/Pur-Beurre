@@ -1,12 +1,32 @@
 {% extends "home/base.html" %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
 
+    <style type="text/css">
+        .bgimg {
+            background-image: url({% static 'home/img/bg-masthead.jpg' %});
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .well {
+           background-color: rgba(245, 245, 245, 0.4);
+        }
+    </style>
+
   <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
-  <p class="col d-flex invisible" style="margin-bottom: 200px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
+  <p class="col d-flex invisible" style="margin-bottom: 70px"> This Paragraph ensure the bottom of the conversation isn't hidden by the Footer.</p>
   <!-- Do no remove - Ensure dialogue not hidden by Header's Navbar -->
+
+  <div class="container-fluid bgimg w-100 h-50 mb-4">
+    <div class="d-flex flex-column h-20 justify-content-center text-center">
+      <p class="h1 well font-weight-bold text-dark-70 m-4">A hoy</p>
+      <p class="h2 well font-weight-bold text-dark-70 m-4">{{ user.first_name|title }}</p>
+    </div>
+  </div>
 
   <main role="main" class="container">
     <div class="row">
