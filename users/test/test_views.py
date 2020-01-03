@@ -14,8 +14,7 @@ class TestViews(TestCase):
         self.profile_url = reverse('profile')
 
         self.user_1 = User.objects.create_user(
-            pk=1,
-            username='Fav Models Unit Test 1',
+            username='testuser', password='12345',
             email='boggusmail@boggusmail.net'
         )
 
@@ -26,10 +25,9 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'users/register.html')
 
-    # def test_profile_GET(self):
-    #     """Testing the profile GET method's function"""
-    #     response = self.client.get(self.profile_url)
-    #     self.assertEquals(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'users/profile.html')
-    #     # This test doesn't work as it needs to pass LoginRequiredMixin, UserPassesTestMixin tests
-    #     # Without param variables matching thoses requisits, the server revert a 302 Error and response no templates
+    def test_profile_GET(self):
+        """Testing the profile GET method's function"""
+        logged_in = self.client.login(username='testuser', password='12345')
+        response = self.client.get(self.profile_url)
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'users/profile.html')
