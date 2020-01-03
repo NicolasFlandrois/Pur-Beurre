@@ -55,16 +55,6 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'users/password_reset_done.html')
 
-    # SLUG: password-reset-confirm/<uidb64>/<token>/
-    # def test_password_reset_confirm(self):
-        """Testing URL - Password Reset Confirm"""
-    #     response = self.client.get(self.password_reset_confirm_url)
-    #     url = reverse('password_reset_confirm')
-    #     self.assertEquals(resolve(url).func,
-    #                       auth_views.PasswordResetConfirmView.as_view())
-    #     self.assertEquals(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'users/password_reset_confirm.html')
-
     def test_password_reset_complete(self):
         """Testing URL - Password Reset Complete"""
         response = self.client.get(self.password_reset_complete_url)
