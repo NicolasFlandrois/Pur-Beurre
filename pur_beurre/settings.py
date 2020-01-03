@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,10 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'nkyedh2a$c6&#0m%9i-e#v_(=x0pcx!xqn2vv=ujdh$y#8ox)v'
+# SECRET_KEY = 'nkyedh2a$c6&#0m%9i-e#v_(=x0pcx!xqn2vv=ujdh$y#8ox)v'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = []
 
@@ -79,8 +81,12 @@ WSGI_APPLICATION = 'pur_beurre.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',  # on utilise l'adaptateur postgresql
+        'NAME': 'pur_beurre',  # le nom de notre base de donnees creee precedemment
+        'USER': os.environ.get('DB_USER'),  # attention : remplacez par votre nom d'utilisateur
+        'PASSWORD': 'DB_PASSWORD',
+        'HOST': '',
+        'PORT': '5432',
     }
 }
 
@@ -131,3 +137,13 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+
+# Heroku Settings
+django_heroku.settings(locals())
