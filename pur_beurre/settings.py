@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = []
 
@@ -83,7 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # on utilise l'adaptateur postgresql
         'NAME': 'pur_beurre',  # le nom de notre base de donnees creee precedemment
-        'USER': os.environ.get('DB_USER'),  # attention : remplacez par votre nom d'utilisateur
+        # attention : remplacez par votre nom d'utilisateur
+        'USER': os.environ.get('DB_USER'),
         'PASSWORD': 'DB_PASSWORD',
         'HOST': '',
         'PORT': '5432',
