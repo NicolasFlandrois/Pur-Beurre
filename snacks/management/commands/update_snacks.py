@@ -31,7 +31,7 @@ class Command(BaseCommand):
                                    nutriscore=prod['nutriscore'].lower())
                     prod.save()
                     print(f'Added to the database :    {prod.name} \
-(EAN: {prod.ean}. ')
+(EAN: {prod.ean}). ')
                 else:
                     print(f'This product already part of this database :    \
 {Product.objects.get(ean=prod["ean"]).name} (EAN: {prod["ean"]}).')
