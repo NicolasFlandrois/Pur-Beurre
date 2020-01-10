@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = []
@@ -85,7 +86,7 @@ DATABASES = {
         'NAME': 'pur_beurre',  # le nom de notre base de donnees creee precedemment
         # attention : remplacez par votre nom d'utilisateur
         'USER': os.environ.get('DB_USER'),
-        'PASSWORD': 'DB_PASSWORD',
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': '',
         'PORT': '5432',
     }
@@ -146,5 +147,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
-# Heroku Settings
+# Heroku Settings, Activates Django-Heroku
 django_heroku.settings(locals())
