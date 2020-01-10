@@ -299,5 +299,12 @@
         "category":"Barres Snacks",
         "image":"products_pics/5060221203753.jpg",
         "nutriscore":"C"
+    },
+    {
+        "ean":"0854541000056",
+        "name":"Sirop D'erable Ambre - Biodelices",
+        "category":"sirop d'érable",
+        "image":"product_default.png",
+        "nutriscore":"D"
     }
 ]
