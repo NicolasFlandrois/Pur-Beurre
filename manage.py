@@ -1,5 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/python3.7
+# UTF8
+# Date: Fri 10 Jan 2020 20:28:09 CET
+# Author: Nicolas Flandrois
+
 """Django's command-line utility for administrative tasks."""
+
 import os
 import sys
 
