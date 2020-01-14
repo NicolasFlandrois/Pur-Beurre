@@ -37,4 +37,7 @@ class Command(BaseCommand):
 {Product.objects.get(ean=prod["ean"]).name} (EAN: {prod["ean"]}).')
 
         except:
-            raise CommandError('Something went wrong here')
+            print(f'Something went wrong here :    {prod.name} \
+(EAN: {prod.ean}). ')
+            continue
+            # raise CommandError('Something went wrong here')
