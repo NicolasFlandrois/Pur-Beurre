@@ -22,16 +22,16 @@ class Product(models.Model):
         """Provides absolute URL for product detail page"""
         return reverse('detail', kwargs={'pk': self.pk})
 
-    def save(self, *args, **kwargs):
-        """Overwrite the save() method with custom informations"""
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     """Overwrite the save() method with custom informations"""
+    #     super().save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
+    #     img = Image.open(self.image.path)
 
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+    #     if img.height > 300 or img.width > 300:
+    #         output_size = (300, 300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)
 
 
 class Favourite(models.Model):
