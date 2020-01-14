@@ -39,5 +39,5 @@ class Command(BaseCommand):
         except:
             print(f'Something went wrong here :    {prod.name} \
 (EAN: {prod.ean}). ')
-            continue
+            pass
             # raise CommandError('Something went wrong here')
