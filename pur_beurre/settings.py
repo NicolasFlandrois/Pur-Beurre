@@ -22,12 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'nkyedh2a$c6&#0m%9i-e#v_(=x0pcx!xqn2vv=ujdh$y#8ox)v'
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = 'nkyedh2a$c6&#0m%9i-e#v_(=x0pcx!xqn2vv=ujdh$y#8ox)v'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+# DEBUG = True
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = ['pur-beurre-nfl.herokuapp.com']
 
@@ -88,10 +88,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',  # on utilise l'adaptateur postgresql
         'NAME': 'pur_beurre',  # le nom de notre base de donnees creee precedemment
         # attention : remplacez par votre nom d'utilisateur
-        # 'USER': os.environ.get('DB_USER'),
-        # 'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'USER': 'odin',
-        'PASSWORD': 'glasamottu',
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': '',
         'PORT': '5432',
     }
@@ -169,9 +167,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
-# Heroku Settings, Activates Django-Heroku
-django_heroku.settings(locals())
-
 # AWS S3 STORAGE FILES SETTINGS
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -181,3 +176,6 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Heroku Settings, Activates Django-Heroku
+django_heroku.settings(locals())
