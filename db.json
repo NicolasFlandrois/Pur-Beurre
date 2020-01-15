@@ -1,0 +1,310 @@
+[
+    {
+        "ean":"3017620429484",
+        "name":"Nutella - Ferrero",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/3017620429484.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"3560070472888",
+        "name":"Pâte à tartiner - Carrefour Bio",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/3560070472888.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"5410126006957",
+        "name":"The original speculoos - Lotus",
+        "category":"pâte à tartiner speculoos",
+        "image":"products_pics/5410126006957.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"3700774300487",
+        "name":"Pâte à tartiner Speculos - Speculoos",
+        "category":"pâte à tartiner speculoos",
+        "image":"products_pics/3700774300487.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"8710795630918",
+        "name":"peanut butter - Jack Klijn",
+        "category":"beurre cacahuètes",
+        "image":"products_pics/8710795630918.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"3760091721747",
+        "name":"Beurre de cacahuètes - Ethiquable",
+        "category":"beurre cacahuètes",
+        "image":"products_pics/3760091721747.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3045320001525",
+        "name":"Confiture Extra Fraises - Bonne Maman",
+        "category":"confiture",
+        "image":"products_pics/3045320001525.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3560070986897",
+        "name":"Confiture de fraises - Reflets de France",
+        "category":"confiture",
+        "image":"products_pics/3560070986897.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3608580750031",
+        "name":"Confiture à L'Abricot - Bonne Maman",
+        "category":"confiture",
+        "image":"products_pics/3608580750031.jpg",
+        "nutriscore":"C"
+    },
+    {
+        "ean":"3245390034830",
+        "name":"Confiture d'abricots - Reflets de France",
+        "category":"confiture",
+        "image":"products_pics/3245390034830.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3045320001648",
+        "name":"Confiture orange - Bonne Maman",
+        "category":"confiture",
+        "image":"products_pics/3045320001648.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3245390060709",
+        "name":"Confiture d'oranges - Reflets de France",
+        "category":"confiture",
+         "image":"product_default.png",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"2001111060035",
+        "name":"Coulis de fraises - Atelier Des Gouts Sucres",
+        "category":"coulis",
+        "image":"product_default.png",
+        "nutriscore":"C"
+    },
+    {
+        "ean":"3228170819506",
+        "name":"Coulis Fraises - Ponthier",
+        "category":"coulis",
+        "image":"products_pics/3228170819506.jpg",
+        "nutriscore":"B"
+    },
+    {
+        "ean":"3088542500278",
+        "name":"Pur Sirop d'érable - Maple joe",
+        "category":"sirop d'érable",
+        "image":"products_pics/3088542500278.jpg",
+        "nutriscore":"U"
+    },
+    {
+        "ean":"0815126002179",
+        "name":"Sirop D'érable Pur 100% - Nokomis",
+        "category":"sirop d'érable",
+        "image":"products_pics/0815126002179.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"3088545004001",
+        "name":"Miel de fleurs - Lune de Miel",
+        "category":"miel",
+        "image":"products_pics/3088545004001.jpg",
+        "nutriscore":"U"
+    },
+    {
+        "ean":"3088540202860",
+        "name":"Miel du Poitou-Charente - Miel l'Apiculteur",
+        "category":"miel",
+        "image":"products_pics/3088540202860.jpg",
+        "nutriscore":"U"
+    },
+    {
+        "ean":"3456300011524",
+        "name":"Pâte à tartiner choco noisette - Jardin Bio",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/3456300011524.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"8001505005592",
+        "name":"Nocciolata Pâte à tartiner au cacao et noisettes - Rigoni di Asiago",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/8001505005592.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3250390114161",
+        "name":"Noikao - Ivoria",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/3250390114161.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"7612100066935",
+        "name":"Ovomaltine crunchy",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/7612100066935.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"3664346312936",
+        "name":"Poulain pate à tartiner",
+        "category":"pâte à tartiner",
+        "image":"products_pics/3664346312936.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3330720237361",
+        "name":"Pâte a tartiner noisettes cacao - Lucien Georgelin",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/3330720237361.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"3700278403936",
+        "name":"Pâte à tartiner Banania",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/3700278403936.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"3770005999650",
+        "name":"Crème à tartiner noisette - Confiture Parisienne",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/3770005999650.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"7622210585691",
+        "name":"Patamilka - Milka",
+        "category":"pâte à tartiner cacao",
+        "image":"products_pics/7622210585691.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"5000159407236",
+        "name":"Mars",
+        "category":"Barres Snacks",
+        "image":"products_pics/5000159407236.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"5000159459228",
+        "name":"Twix",
+        "category":"Barres Snacks",
+        "image":"products_pics/5000159459228.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"93600057",
+        "name":"Kit Kat - Nestle",
+        "category":"Barres Snacks",
+        "image":"products_pics/93600057.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"80052760",
+        "name":"Kinder Bueno",
+        "category":"Barres Snacks",
+        "image":"products_pics/80052760.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"5000159326599",
+        "name":"Bounty",
+        "category":"Barres Snacks",
+        "image":"products_pics/5000159326599.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"3760091728449",
+        "name":"Barre Physalis Grenade pâte de datte et fruits séchés - Ethiquable",
+        "category":"Barres Snacks",
+        "image":"products_pics/3760091728449.jpg",
+        "nutriscore":"C"
+    },
+    {
+        "ean":"8723700973864",
+        "name":"Barre De Régime Orange Et Chocolat Noir - Gerlinea",
+        "category":"Barres Snacks",
+        "image":"products_pics/8723700973864.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"5000159469128",
+        "name":"Choco Banane - Balisto",
+        "category":"Barres Snacks",
+        "image":"products_pics/5000159469128.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3760267401947",
+        "name":"Cerise amande hibiscus - Baouw",
+        "category":"Barres Snacks",
+        "image":"products_pics/3760267401947.jpg",
+        "nutriscore":"C"
+    },
+    {
+        "ean":"5411788048125",
+        "name":"Raw Bar Abricot Cannelle - Lima",
+        "category":"Barres Snacks",
+        "image":"products_pics/5411788048125.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3583788159810",
+        "name":"Barres énergétiques aux dates, aux céréales, et à la banane - Aptonia",
+        "category":"Barres Snacks",
+         "image":"product_default.png",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"5060088702307",
+        "name":"Cocoa Oat Flapjack, Cocoa Oat - Trek",
+        "category":"Barres Snacks",
+        "image":"products_pics/5060088702307.jpg",
+        "nutriscore":"E"
+    },
+    {
+        "ean":"5425002402327",
+        "name":"Protein Burst (30% Whey) - Fraises - QNT",
+        "category":"Barres Snacks",
+        "image":"products_pics/5425002402327.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"5060495111372",
+        "name":"Cocoa & Orange Flavour Bar - Huel",
+        "category":"Barres Snacks",
+        "image":"products_pics/5060495111372.jpg",
+        "nutriscore":"C"
+    },
+    {
+        "ean":"3760056250121",
+        "name":"Punchy bar Amande - Punch Power",
+        "category":"Barres Snacks",
+        "image":"products_pics/3760056250121.jpg",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"5060221203753",
+        "name":"Carb Killa Bar - Peanut Nutter - Grenade",
+        "category":"Barres Snacks",
+        "image":"products_pics/5060221203753.jpg",
+        "nutriscore":"C"
+    },
+    {
+        "ean":"0854541000056",
+        "name":"Sirop D'erable Ambre - Biodelices",
+        "category":"sirop d'érable",
+        "image":"product_default.png",
+        "nutriscore":"D"
+    }
+]
