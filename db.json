@@ -306,5 +306,19 @@
         "category":"sirop d'érable",
         "image":"product_default.png",
         "nutriscore":"D"
+    },
+    {
+        "ean":"3076820002064",
+        "name":"Olives confites noires dénoyautées - Crespo",
+        "category":"olives",
+        "image":"product_default.png",
+        "nutriscore":"D"
+    },
+    {
+        "ean":"3021760400012",
+        "name":"Pom'Potes Pomme - Materne",
+        "category":"COMPOTES",
+        "image":"product_default.png",
+        "nutriscore":"a"
     }
 ]
