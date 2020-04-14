@@ -134,7 +134,7 @@
     },
     {
         "ean":"8001505005592",
-        "name":"Nocciolata Pâte à tartiner au cacao et noisettes - Rigoni di Asiago",
+        "name":"Nocciolata Pâte à tartiner au cacao et noisettes",
         "category":"pâte à tartiner cacao",
         "image":"products_pics/8001505005592.jpg",
         "nutriscore":"D"
@@ -225,7 +225,7 @@
     },
     {
         "ean":"3760091728449",
-        "name":"Barre Physalis Grenade pâte de datte et fruits séchés - Ethiquable",
+        "name":"Barre Physalis Grenade, datte, fruits - Ethiquable",
         "category":"Barres Snacks",
         "image":"products_pics/3760091728449.jpg",
         "nutriscore":"C"
@@ -260,7 +260,7 @@
     },
     {
         "ean":"3583788159810",
-        "name":"Barres énergétiques aux dates, aux céréales, et à la banane - Aptonia",
+        "name":"Barres énergétiques - Aptonia",
         "category":"Barres Snacks",
          "image":"product_default.png",
         "nutriscore":"D"
