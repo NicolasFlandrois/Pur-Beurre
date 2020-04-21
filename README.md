@@ -1,7 +1,7 @@
 # Pur-Beurre
 OC - Project 8 - Python 3.7, Django, PostgreSQL, HTML/CSS/JS/Bootstrap
 
-![](https://img.shields.io/badge/Python-%3E%3D3.7-yellow.svg)  ![](https://img.shields.io/badge/Django-2.2.8-brightgreen.svg) ![](https://img.shields.io/badge/local%20database-PostgreSQL-blue.svg)
+![](https://img.shields.io/badge/Python-%3E%3D3.7-yellow.svg)  ![](https://img.shields.io/badge/Django-%3E%3D2.2.10-brightgreen.svg) ![](https://img.shields.io/badge/local%20database-PostgreSQL-blue.svg)
 
 -----------------------
 
